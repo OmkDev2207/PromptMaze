@@ -13,6 +13,7 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
 import ContinueReading from '@/components/layout/ContinueReading';
 import Newsletter from '@/components/ui/Newsletter';
+import CollapsibleSEOText from '@/components/ui/CollapsibleSEOText';
 import { GraduationCap, Code, Megaphone, Users, BookOpen, BarChart3, Compass, Sparkles, ArrowRight, HelpCircle, ChevronRight } from 'lucide-react';
 
 interface HubProps {
@@ -138,6 +139,14 @@ export default async function ProfessionHub({ params }: HubProps) {
         {/* Subtle decorative background glow */}
         <div className="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-white/10 blur-3xl pointer-events-none" />
         
+        {['teachers', 'developers', 'marketers', 'writers', 'emails'].includes(p.id) && (
+          <img 
+            src={`/images/${p.id}_banner.png`} 
+            alt={`${p.name} Banner`} 
+            className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay pointer-events-none"
+          />
+        )}
+        
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
@@ -178,14 +187,11 @@ export default async function ProfessionHub({ params }: HubProps) {
         <div className="lg:col-span-2 flex flex-col gap-10">
           
           {/* Introduction Content */}
-          <section className="bg-white rounded-3xl border border-zinc-200/80 p-6 sm:p-8 dark:border-zinc-800/80 dark:bg-zinc-900/40 backdrop-blur-md">
-            <div
-              className="prose prose-zinc max-w-none dark:prose-invert
-                prose-h2:text-lg prose-h2:font-extrabold prose-h2:text-zinc-900 dark:prose-h2:text-zinc-50 prose-h2:mt-6 prose-h2:mb-3
-                prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
-              dangerouslySetInnerHTML={{ __html: parsedIntro }}
-            />
-          </section>
+          <CollapsibleSEOText 
+            htmlContent={parsedIntro} 
+            title={`AI Prompts for ${p.name} — Overview`} 
+            maxCollapsedHeight="220px" 
+          />
 
           {/* Categories Listing */}
           <section>
@@ -232,37 +238,28 @@ export default async function ProfessionHub({ params }: HubProps) {
           </section>
 
           {/* Beginner Guide Section */}
-          <section className="bg-white rounded-3xl border border-zinc-200/80 p-6 sm:p-8 dark:border-zinc-800/80 dark:bg-zinc-900/40 backdrop-blur-md">
-            <div
-              className="prose prose-zinc max-w-none dark:prose-invert
-                prose-h2:text-lg prose-h2:font-extrabold prose-h2:text-zinc-900 dark:prose-h2:text-zinc-50 prose-h2:mt-6 prose-h2:mb-3
-                prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
-              dangerouslySetInnerHTML={{ __html: parsedBeginner }}
-            />
-          </section>
+          <CollapsibleSEOText 
+            htmlContent={parsedBeginner} 
+            title={`Beginner Prompting Guide for ${p.name}`} 
+            maxCollapsedHeight="220px" 
+          />
 
           {/* AdSense Mid page slot */}
           <AdSenseSlot slot={`${p.id}-hub-middle`} />
 
           {/* Advanced Guide Section */}
-          <section className="bg-white rounded-3xl border border-zinc-200/80 p-6 sm:p-8 dark:border-zinc-800/80 dark:bg-zinc-900/40 backdrop-blur-md">
-            <div
-              className="prose prose-zinc max-w-none dark:prose-invert
-                prose-h2:text-lg prose-h2:font-extrabold prose-h2:text-zinc-900 dark:prose-h2:text-zinc-50 prose-h2:mt-6 prose-h2:mb-3
-                prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
-              dangerouslySetInnerHTML={{ __html: parsedAdvanced }}
-            />
-          </section>
+          <CollapsibleSEOText 
+            htmlContent={parsedAdvanced} 
+            title={`Advanced Prompting & Workflows`} 
+            maxCollapsedHeight="220px" 
+          />
 
           {/* Niche Target / Search Intent Focus Section */}
-          <section className="bg-white rounded-3xl border border-zinc-200/80 p-6 sm:p-8 dark:border-zinc-800/80 dark:bg-zinc-900/40 backdrop-blur-md">
-            <div
-              className="prose prose-zinc max-w-none dark:prose-invert
-                prose-h2:text-lg prose-h2:font-extrabold prose-h2:text-zinc-900 dark:prose-h2:text-zinc-50 prose-h2:mt-6 prose-h2:mb-3
-                prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
-              dangerouslySetInnerHTML={{ __html: parsedNiche }}
-            />
-          </section>
+          <CollapsibleSEOText 
+            htmlContent={parsedNiche} 
+            title={`Niche Scenarios & Custom Prompts`} 
+            maxCollapsedHeight="220px" 
+          />
 
           {/* Prompt Library Segment */}
           <section>

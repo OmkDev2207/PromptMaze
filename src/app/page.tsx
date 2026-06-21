@@ -184,6 +184,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Visual Workflow Steps (How It Works) */}
+      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 animate-fade-in-up">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
+            Stop Getting Poor AI Outputs
+          </h2>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400 font-semibold">
+            Deploy standard prompt structures inside Claude, ChatGPT, or Gemini in 3 simple steps:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative">
+          <div className="flex flex-col items-center p-6 rounded-3xl border border-zinc-200/60 bg-white/60 dark:border-zinc-800/60 dark:bg-zinc-900/20 backdrop-blur-md">
+            <div className="w-12 h-12 rounded-2xl bg-violet-600/10 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg font-black mb-4">
+              1
+            </div>
+            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 mb-2">Select Your Profession</h3>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-semibold">
+              Browse 30+ role-based prompt libraries (e.g. Developers, Teachers, Marketers) with tested templates.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center p-6 rounded-3xl border border-zinc-200/60 bg-white/60 dark:border-zinc-800/60 dark:bg-zinc-900/20 backdrop-blur-md">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg font-black mb-4">
+              2
+            </div>
+            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 mb-2">Refine in Generator</h3>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-semibold">
+              Customize variables (like [TOPIC] or [SUBJECT]) using our interactive form builders in one click.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center p-6 rounded-3xl border border-zinc-200/60 bg-white/60 dark:border-zinc-800/60 dark:bg-zinc-900/20 backdrop-blur-md">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-600/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg font-black mb-4">
+              3
+            </div>
+            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 mb-2">Paste & Execute</h3>
+            <p className="text-xs text-zinc-550 dark:text-zinc-400 leading-relaxed font-semibold">
+              Deploy our standardized role-and-constraint instructions to get perfect, hallucination-free AI answers.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Index of All Other 25+ Professions */}
       <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 animate-fade-in-up">
         <div className="rounded-3xl border border-zinc-200/85 bg-white p-6 sm:p-8 dark:border-zinc-800/85 dark:bg-zinc-900/30 backdrop-blur-md">

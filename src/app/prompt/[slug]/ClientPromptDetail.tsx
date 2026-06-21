@@ -87,10 +87,15 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
         ))}
       </div>
 
-      {/* Copy Prompt Box */}
+      {/* Copy Prompt Box (User Chat Bubble Style) */}
       <div className="relative mt-6">
         <div className="flex items-center justify-between rounded-t-2xl bg-zinc-100 px-4 py-3.5 text-xs font-bold text-zinc-700 border-x border-t border-zinc-200 dark:bg-zinc-950 dark:text-zinc-400 dark:border-zinc-800">
-          <span className="uppercase tracking-wider">Prompt Template</span>
+          <div className="flex items-center gap-2 select-none">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-violet-600 text-[9px] font-black text-white">
+              U
+            </div>
+            <span className="uppercase tracking-wider">User Prompt Template</span>
+          </div>
           <button
             onClick={handleCopy}
             className="flex items-center gap-1.5 hover:text-zinc-950 dark:hover:text-zinc-250 transition-colors"
