@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
-import { Cpu, Copy, Check, Sparkles, GraduationCap, Code, Megaphone, Users, BookOpen, BarChart3, HelpCircle, RefreshCw } from 'lucide-react';
+import { Cpu, Copy, Check, Sparkles, GraduationCap, Code, Megaphone, Users, BookOpen, BarChart3, HelpCircle, RefreshCw, PenTool, Briefcase, Headphones, Rocket, UserCheck, Laptop } from 'lucide-react';
 
 export default function PromptGeneratorPage() {
   const [profession, setProfession] = useState('teachers');
@@ -70,7 +70,67 @@ Please generate a professional auditing and reporting pack including:
 1. Detailed workflow checklist matching GAAP/IFRS standards
 2. Formulas, macros, or modeling guidelines
 3. Three critical risk factors or potential audit flags
-4. Executive summary template for management reviews.`
+4. Executive summary template for management reviews.`,
+
+    'content-writers': `You are a professional content writer and SEO specialist.
+Your task is to draft content on: [TASK]
+The primary reader audience and tone requirements are: [GOAL]
+
+Please provide a structured content layout including:
+1. Catchy headline options (minimum 3)
+2. Detailed outline with H2 and H3 structures
+3. Core paragraph drafts with integrated semantic keywords
+4. Recommended meta description and call-to-action (CTA).`,
+
+    'project-managers': `You are an expert technical project manager and agile facilitator.
+Your task is to organize or outline: [TASK]
+The target timeline or delivery goals are: [GOAL]
+
+Please compile a structured project scope document including:
+1. Executive project summary and high-level milestones
+2. Detailed work breakdown structure (WBS)
+3. Risk registry with mitigation actions
+4. Suggested sprint backlog items with acceptance criteria.`,
+
+    'customer-support': `You are an empathetic customer support lead and retention specialist.
+Your task is to draft response templates for: [TASK]
+The customer profile and resolution constraint is: [GOAL]
+
+Please generate customer communication templates including:
+1. Direct, empathetic reply draft (formal tone)
+2. Alternative friendly/casual reply draft
+3. Step-by-step troubleshooting checklist for the customer
+4. Internal escalation ticket notes.`,
+
+    'startup-founders': `You are a visionary startup founder and venture accelerator advisor.
+Your task is to structure pitch or planning materials for: [TASK]
+The investor audience or target milestone is: [GOAL]
+
+Please output a comprehensive startup brief containing:
+1. 30-second elevator pitch framework
+2. Problem-Solution validation matrix
+3. Competitor analysis grid template
+4. Key operational metrics (KPIs) for the next 90 days.`,
+
+    'hr-professionals': `You are a certified human resources manager and employee success specialist.
+Your task is to design guidelines or policies for: [TASK]
+The corporate culture goals or legal boundaries are: [GOAL]
+
+Please compile a structured HR document containing:
+1. Clear policy objective and scope statement
+2. Key rules or procedural guidelines (3-5 items)
+3. Frequently Asked Questions (FAQs) for employees
+4. Implementation checklist for department leads.`,
+
+    'freelancers': `You are a successful independent freelancer and business operator.
+Your task is to scope or proposal-draft: [TASK]
+The client requirements and fee constraints are: [GOAL]
+
+Please generate a comprehensive freelance scope kit including:
+1. Detailed project deliverables checklist
+2. Pricing and timeline breakdown template
+3. Client communication email draft
+4. Scope change/revision policy terms.`
   };
 
   const compilePrompt = () => {
@@ -143,7 +203,13 @@ Please generate a professional auditing and reporting pack including:
                     { id: 'marketers', name: 'Marketer', icon: <Megaphone className="h-4 w-4" /> },
                     { id: 'recruiters', name: 'Recruiter', icon: <Users className="h-4 w-4" /> },
                     { id: 'students', name: 'Student', icon: <BookOpen className="h-4 w-4" /> },
-                    { id: 'accountants', name: 'Accountant', icon: <BarChart3 className="h-4 w-4" /> }
+                    { id: 'accountants', name: 'Accountant', icon: <BarChart3 className="h-4 w-4" /> },
+                    { id: 'content-writers', name: 'Writer', icon: <PenTool className="h-4 w-4" /> },
+                    { id: 'project-managers', name: 'PM', icon: <Briefcase className="h-4 w-4" /> },
+                    { id: 'customer-support', name: 'Support', icon: <Headphones className="h-4 w-4" /> },
+                    { id: 'startup-founders', name: 'Founder', icon: <Rocket className="h-4 w-4" /> },
+                    { id: 'hr-professionals', name: 'HR', icon: <UserCheck className="h-4 w-4" /> },
+                    { id: 'freelancers', name: 'Freelancer', icon: <Laptop className="h-4 w-4" /> }
                   ].map((p) => (
                     <button
                       key={p.id}
