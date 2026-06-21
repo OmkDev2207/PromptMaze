@@ -51,7 +51,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 pb-16 md:pb-0">
+      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />

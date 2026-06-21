@@ -248,10 +248,14 @@ export default function Header() {
           <div>
             {/* Drawer Header */}
             <div className="flex items-center justify-between">
-              <span className="font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5 hover:opacity-90"
+              >
                 <Cpu className="h-4.5 w-4.5 text-violet-600" />
                 PromptMaze
-              </span>
+              </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="rounded-lg p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800"
@@ -261,8 +265,13 @@ export default function Header() {
               </button>
             </div>
 
+            {/* Mobile Quick Search */}
+            <div className="mt-6">
+              <SearchAutocomplete placeholder="Search prompts, guides..." variant="nav" />
+            </div>
+
             {/* Quick Links */}
-            <div className="mt-8 flex flex-col gap-2">
+            <div className="mt-6 flex flex-col gap-2">
               <Link
                 href="/guides"
                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
