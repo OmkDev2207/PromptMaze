@@ -436,6 +436,20 @@ export const professions: Profession[] = [
     metaDescription: 'Discover 100+ AI prompts for freelancers including proposals, project scopes, client emails, and invoice requests.',
     featured: false,
   },
+  {
+    id: 'writers',
+    slug: 'writers',
+    name: 'Writers',
+    description: 'AI prompts for creative writing, storytelling, character creation, and world building.',
+    longDescription: 'Unleash your creative potential with AI prompts designed specifically for writers. Whether you are crafting novels, writing blog posts, brainstorming character arcs, building worlds, or penning poetry, PromptMaze provides the ultimate frameworks to overcome writer\'s block and elevate your writing.',
+    icon: '✍️',
+    color: 'indigo',
+    gradient: 'from-indigo-500 to-violet-600',
+    bgGradient: 'bg-gradient-to-br from-indigo-500 to-violet-600',
+    metaTitle: 'Writers AI Prompts (2026) | Best ChatGPT Prompts for Writers',
+    metaDescription: 'Discover 100+ AI prompts for writers including story generation, character creation, world building, and novel writing.',
+    featured: true,
+  },
 ];
 
 export function getProfessionBySlug(slug: string): Profession | undefined {

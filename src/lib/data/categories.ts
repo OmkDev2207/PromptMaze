@@ -42,6 +42,15 @@ const staticCategories: Category[] = [
   { id: 'accountants-excel-automation', slug: 'excel-prompts', professionSlug: 'accountants', name: 'Excel Automation', description: 'Write Excel formulas, macros, and automate repetitive financial tasks.', icon: '🗂️', sortOrder: 3 },
   { id: 'accountants-tax-research', slug: 'tax-research-prompts', professionSlug: 'accountants', name: 'Tax Research', description: 'Research tax regulations, deductions, and compliance requirements.', icon: '🏛️', sortOrder: 4 },
   { id: 'accountants-client-communication', slug: 'client-communication-prompts', professionSlug: 'accountants', name: 'Client Communication', description: 'Write clear financial explanations and client-facing documents.', icon: '💼', sortOrder: 5 },
+
+  // WRITERS
+  { id: 'writers-creative-writing', slug: 'creative-writing-prompts', professionSlug: 'writers', name: 'Creative Writing', description: 'Brainstorm creative outlines, prose styles, and story hooks.', icon: '💡', sortOrder: 1 },
+  { id: 'writers-story-writing', slug: 'story-writing-prompts', professionSlug: 'writers', name: 'Story Writing', description: 'Generate engaging short stories, dialogues, and plot shifts.', icon: '📖', sortOrder: 2 },
+  { id: 'writers-novel-writing', slug: 'novel-writing-prompts', professionSlug: 'writers', name: 'Novel Writing', description: 'Structure chapter outlines, book frameworks, and narratives.', icon: '📚', sortOrder: 3 },
+  { id: 'writers-blog-writing', slug: 'blog-writing-prompts', professionSlug: 'writers', name: 'Blog Writing', description: 'Write engaging blog posts, article hooks, and editorial copy.', icon: '📰', sortOrder: 4 },
+  { id: 'writers-essay-writing', slug: 'essay-writing-prompts', professionSlug: 'writers', name: 'Essay Writing', description: 'Formulate thesis statements, outlines, and structured arguments.', icon: '✍️', sortOrder: 5 },
+  { id: 'writers-script-writing', slug: 'script-writing-prompts', professionSlug: 'writers', name: 'Script Writing', description: 'Draft screenplays, video script blueprints, and dialogues.', icon: '🎬', sortOrder: 6 },
+  { id: 'writers-poetry-writing', slug: 'poetry-writing-prompts', professionSlug: 'writers', name: 'Poetry Writing', description: 'Write custom poems, sonnets, rhyming sequences, and free verses.', icon: '🖋️', sortOrder: 7 },
 ];
 
 // Add programmatically compiled categories for the other 30 professions

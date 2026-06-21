@@ -477,6 +477,44 @@ const staticPrompts: Prompt[] = [
     exampleOutput: '## Client Explanation: Depreciation vs. Expensing\n\n**Simple Version:**\nThink of buying a delivery truck for your business. You could either:\n- Write off the full cost this year (like throwing away the receipt immediately)\n- Or spread the cost over 5 years (like paying in installments on your tax return)\n\nThe IRS gives you both options, and choosing the right one can save you thousands...',
     tags: ['client communication', 'financial explanation', 'plain language', 'advisory'], featured: false,
   },
+
+  // ===================== WRITERS =====================
+  {
+    id: 'w-gp-001', slug: 'chatgpt-prompts-for-writers', title: 'Best ChatGPT Prompts for Writers',
+    content: `Act as a professional developmental editor and writing coach. I am working on a writing project:\n\n**Project Type:** [BOOK / NOVEL / ARTICLE / SHORT STORY / MEMOIR]\n**Genre:** [E.G. SCI-FI / FANTASY / MYSTERY / NON-FICTION]\n**Working Title:** [TITLE / TOPIC]\n**Core Concept:** [BRIEF DESCRIPTION]\n**My Current Challenge:** [E.G. WRITER'S BLOCK / PLOT HOLE / PACE / CHARACTER DIALOGUE]\n\nProvide:\n1. **Critical Analysis**: Identify the strengths and potential pitfalls of the concept.\n2. **Structural Advice**: Suggest a 3-act structure outline for this concept.\n3. **Dialogue Polish**: Give me 3 tips to improve the voice of characters in this genre.\n4. **Actionable Exercises**: Give me 3 writing prompts to help me break through my current challenge.\n5. **Recommended Word Count & Pace Guide** for this project type.`,
+    description: 'Get comprehensive feedback, structural edits, and character guidance from a professional editing persona.',
+    useCase: 'Use when starting a new draft, refining a manuscript, or resolving writer\'s block.',
+    professionSlug: 'writers', categorySlug: 'creative-writing-prompts', difficulty: 'intermediate',
+    exampleOutput: '## Writing Coach Evaluation: Sci-Fi Novel\n\n**Concept Analysis:** Your premise about digital memory transfer is compelling, but watch out for the "exposition dump" trap. Show the technology in action instead of explaining it...',
+    tags: ['creative writing', 'editing', 'writing coach', 'novel structure', 'narrative style'], featured: true,
+  },
+  {
+    id: 'w-sg-001', slug: 'story-generator-prompts', title: 'Generate Engaging Story Outlines',
+    content: `Act as a master fiction storyteller. Generate a complete, engaging short story outline based on:\n\n**Genre:** [E.G. THRILLER / ROMANCE / SCI-FI / URBAN FANTASY]\n**Protagonist:** [NAME, BRIEF DESCRIPTION]\n**Setting:** [TIME, PLACE, ATMOSPHERE]\n**The Inciting Incident:** [WHAT SPARKS THE STORY]\n**Key Theme:** [E.G. REDEMPTION / ISOLATION / FORGIVENESS]\n\nPlease generate:\n1. **Logline**: A 1-sentence hook.\n2. **Beat Sheet**: 15 key plot points matching the Save the Cat format.\n3. **Major Conflict**: Define the internal and external stakes.\n4. **Dialogue Sample**: A 10-line dialogue showing the chemistry between the protagonist and antagonist.\n5. **Climax & Resolution Blueprint**..`,
+    description: 'Generate structured beat sheets, plot points, and dialogue snippets for any genre.',
+    useCase: 'Use when brainstorming short stories or mapping out novel chapter outlines.',
+    professionSlug: 'writers', categorySlug: 'story-writing-prompts', difficulty: 'advanced',
+    exampleOutput: '## Story Outline: Crimson Sky (Thriller)\n\n**Logline:** A retired detective is forced back into action when a signature calling card from a cold case appears in his own home...\n**Beat Sheet:**\n1. Opening Image: Rain-slicked streets of New Chicago...\n...',
+    tags: ['story generator', 'plotting', 'fiction writing', 'plot outline', 'storytelling'], featured: true,
+  },
+  {
+    id: 'w-cc-001', slug: 'character-creation-prompts', title: 'Build Deep, Multi-Dimensional Characters',
+    content: `Act as a novelist and character psychologist. Help me build a detailed character profile for:\n\n**Role in Story:** [PROTAGONIST / ANTAGONIST / MENTOR / SIDEKICK]\n**Archetype:** [E.G. THE REBEL / THE RULER / THE CAREMONGER]\n**Age & Background:** [BRIEF DETAILS]\n**Core Motivation:** [WHAT DO THEY WANT MORE THAN ANYTHING?]\n**The Lie They Believe:** [WHAT INTERNAL FLAW HOLDS THEM BACK?]\n\nCompile a character dossier including:\n1. **Physical Attributes & Quirks** (including body language, speech patterns)\n2. **Psychological Profile** (core fear, primary wound, hidden virtue, dominant vice)\n3. **Internal vs. External Conflict Matrix**\n4. **Character Arc Blueprint** (from flaw to realization/change)\n5. **Diagnostic Monologue**: Write a 1-paragraph monologue where the character explains their worldview.`,
+    description: 'Design complete character dossiers with flaws, wounds, arcs, and voice samples.',
+    useCase: 'Use when designing your cast to ensure they feel like real people with believable motives.',
+    professionSlug: 'writers', categorySlug: 'novel-writing-prompts', difficulty: 'advanced',
+    exampleOutput: '## Character Dossier: Elena Vance (The Rebel)\n\n**Core Motivation:** To expose the council\'s surveillance network.\n**The Lie She Believes:** "If I trust anyone, they will betray me."\n**Physical Quirk:** Constantly adjusts her left sleeve when nervous...',
+    tags: ['character creation', 'character profile', 'novel writing', 'fiction cast', 'dossier'], featured: true,
+  },
+  {
+    id: 'w-wb-001', slug: 'world-building-prompts', title: 'Design Rich, Immersive Settings & Lore',
+    content: `Act as a speculative fiction world-builder. Construct a detailed world setting and lore outline for:\n\n**Genre:** [E.G. HIGH FANTASY / CYBERPUNK / APOCALYPTIC]\n**Core Magic/Tech System:** [DESCRIBE THE RULES OF MAGIC OR TECHNOLOGY]\n**Dominant Society/Government:** [BRIEF DESCRIPTION]\n**Primary Conflict/Crisis:** [E.G. RESOURCE SCARCITY / REBELLION / MAGIC CORRUPTION]\n**Aesthetic/Vibe:** [E.G. RETRO-FUTURISTIC / GRITTY MEDIEVAL]\n\nGenerate a world dossier including:\n1. **Cosmology & Laws**: How magic/technology shapes daily life.\n2. **Social Hierarchy**: Major factions, guilds, or social structures.\n3. **Geography & Key Cities**: 3 notable locations with active cultural descriptions.\n4. **History & Myths**: The biggest historical event (war, disaster, discovery) that defines the current era.\n5. **Local Sayings/Slang**: 3 idioms or slang terms unique to this world.`,
+    description: 'Design speculative magic/tech rules, social structures, geography, and lore.',
+    useCase: 'Use for world-building prep in sci-fi, fantasy, or historical fiction projects.',
+    professionSlug: 'writers', categorySlug: 'creative-writing-prompts', difficulty: 'advanced',
+    exampleOutput: '## World Dossier: Neo-Venice (Cyberpunk)\n\n**Aesthetic:** Bioluminescent canals beneath heavy chrome structures.\n**Geography:**\n1. The Spire: Upper-class sector hovering over the ocean...\n...',
+    tags: ['world building', 'speculative fiction', 'fantasy lore', 'sci-fi setting', 'worldbuilder'], featured: true,
+  },
 ];
 
 // Import categories to generate dynamic prompts programmatically

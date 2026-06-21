@@ -17,7 +17,7 @@ const sectors = [
   {
     name: 'Creative & Design',
     bg: 'bg-pink-500/10 text-pink-600 dark:text-pink-400',
-    profIds: ['photographers', 'graphic-designers', 'ux-ui-designers', 'content-writers', 'copywriters']
+    profIds: ['photographers', 'graphic-designers', 'ux-ui-designers', 'writers', 'content-writers', 'copywriters']
   },
   {
     name: 'Business & Ops',
