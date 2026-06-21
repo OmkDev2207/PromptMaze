@@ -217,8 +217,8 @@ Please generate a comprehensive freelance scope kit including:
                       onClick={() => setProfession(p.id)}
                       className={`flex items-center gap-2 rounded-xl border p-3 text-sm font-semibold transition-all ${
                         profession === p.id
-                          ? 'border-indigo-600 bg-indigo-50 text-indigo-700 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-400'
-                          : 'border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-850'
+                          ? 'border-indigo-600 bg-indigo-50 text-indigo-750 dark:border-indigo-500 dark:bg-indigo-950/40 dark:text-indigo-300'
+                          : 'border-zinc-200 bg-white text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                       }`}
                     >
                       {p.icon}
