@@ -44,6 +44,11 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       type: 'article',
       publishedTime: guide.publishedAt,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${guide.title} | PromptMaze Guides`,
+      description: guide.description,
+    },
   };
 }
 

@@ -82,6 +82,27 @@ function SearchPageContent() {
             Search
           </button>
         </form>
+        
+        {/* Related Searches */}
+        <div className="mt-3 flex flex-wrap gap-2 items-center text-xs">
+          <span className="font-bold text-zinc-400 dark:text-zinc-505 dark:text-zinc-500 uppercase tracking-wider text-[10px]">Related Searches:</span>
+          {[
+            { name: 'Python Prompts', slug: 'python-developers' },
+            { name: 'React Hooks', slug: 'react-developers' },
+            { name: 'SEO Content', slug: 'seo' },
+            { name: 'LinkedIn Hooks', slug: 'linkedin' },
+            { name: 'ATS Resume', slug: 'resumes' },
+            { name: 'STAR Interview Prep', slug: 'interviews' }
+          ].map((item) => (
+            <Link
+              key={item.slug}
+              href={`/chatgpt-prompts-for-${item.slug}`}
+              className="rounded-lg bg-zinc-100 hover:bg-zinc-200 px-2.5 py-1 font-semibold text-zinc-650 hover:text-indigo-600 dark:bg-zinc-900/60 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:hover:text-indigo-400 transition-all duration-150"
+            >
+              🔍 {item.name}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Filters Bar */}

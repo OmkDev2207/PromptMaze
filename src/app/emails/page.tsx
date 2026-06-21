@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     url: 'https://promptmaze.vercel.app/emails',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Email Prompt Library | Best ChatGPT Prompts for Email Writing',
+    description: 'Free copy-paste ChatGPT prompts for professional emails, sales outreach, follow-ups, customer support, job applications, and more.',
+  },
 };
 
 export default function EmailLibraryPage() {

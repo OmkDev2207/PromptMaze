@@ -48,6 +48,11 @@ export async function generateMetadata({ params }: PromptProps): Promise<Metadat
       url: `https://promptmaze.vercel.app/prompt/${prompt.slug}`,
       type: 'article',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 

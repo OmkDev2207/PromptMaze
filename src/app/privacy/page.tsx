@@ -4,6 +4,20 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 export const metadata = {
   title: 'Privacy Policy | PromptMaze',
   description: 'Learn how PromptMaze handles and protects user privacy and database metrics.',
+  alternates: {
+    canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | PromptMaze',
+    description: 'Learn how PromptMaze handles and protects user privacy and database metrics.',
+    url: 'https://promptmaze.vercel.app/privacy',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | PromptMaze',
+    description: 'Learn how PromptMaze handles and protects user privacy and database metrics.',
+  },
 };
 
 export default function PrivacyPage() {

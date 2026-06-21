@@ -4,6 +4,20 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 export const metadata = {
   title: 'About Us | PromptMaze',
   description: 'Learn about PromptMaze, our mission to democratize prompt engineering, and our testing workflow.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Us | PromptMaze',
+    description: 'Learn about PromptMaze, our mission to democratize prompt engineering, and our testing workflow.',
+    url: 'https://promptmaze.vercel.app/about',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | PromptMaze',
+    description: 'Learn about PromptMaze, our mission to democratize prompt engineering, and our testing workflow.',
+  },
 };
 
 export default function AboutPage() {

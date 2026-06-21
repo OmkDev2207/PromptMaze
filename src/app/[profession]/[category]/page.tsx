@@ -52,6 +52,11 @@ export async function generateMetadata({ params }: CategoryProps): Promise<Metad
       url: `https://promptmaze.vercel.app/${p.slug}/${cat.slug}`,
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 

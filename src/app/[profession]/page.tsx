@@ -49,6 +49,11 @@ export async function generateMetadata({ params }: HubProps): Promise<Metadata> 
       url: `https://promptmaze.vercel.app/${p.slug}`,
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 

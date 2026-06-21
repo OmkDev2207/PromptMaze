@@ -38,6 +38,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       url: `https://promptmaze.vercel.app/emails/${cat.slug}`,
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: cat.seoTitle,
+      description: cat.seoDescription,
+    },
   };
 }
 

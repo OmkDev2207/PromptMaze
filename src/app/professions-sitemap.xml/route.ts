@@ -79,7 +79,7 @@ export async function GET() {
   topics.forEach((t) => {
     xml += `
   <url>
-    <loc>${baseUrl}/prompts-for-${t}</loc>
+    <loc>${baseUrl}/chatgpt-prompts-for-${t}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

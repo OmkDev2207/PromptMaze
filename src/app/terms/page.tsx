@@ -4,6 +4,20 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 export const metadata = {
   title: 'Terms of Service | PromptMaze',
   description: 'Read the terms and conditions for using PromptMaze templates and tools.',
+  alternates: {
+    canonical: '/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | PromptMaze',
+    description: 'Read the terms and conditions for using PromptMaze templates and tools.',
+    url: 'https://promptmaze.vercel.app/terms',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | PromptMaze',
+    description: 'Read the terms and conditions for using PromptMaze templates and tools.',
+  },
 };
 
 export default function TermsPage() {

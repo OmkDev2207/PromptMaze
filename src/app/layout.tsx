@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "PromptMaze | Best ChatGPT & AI Prompts for Professionals",
+    description: "Curated ChatGPT and AI prompts for teachers, developers, marketers, recruiters, students, and accountants.",
+  },
 };
 
 export default function RootLayout({

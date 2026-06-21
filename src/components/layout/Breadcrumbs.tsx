@@ -8,8 +8,38 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.vercel.app';
+  
+  const breadcrumbListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': baseUrl,
+      },
+      ...items.map((item, index) => {
+        const itemUrl = item.href 
+          ? (item.href.startsWith('http') ? item.href : `${baseUrl}${item.href}`)
+          : undefined;
+        return {
+          '@type': 'ListItem',
+          'position': index + 2,
+          'name': item.label,
+          ...(itemUrl ? { 'item': itemUrl } : {}),
+        };
+      })
+    ]
+  };
+
   return (
-    <nav className="flex py-3 text-zinc-500 dark:text-zinc-400" aria-label="Breadcrumb">
+    <nav className="flex flex-col py-3 text-zinc-500 dark:text-zinc-400" aria-label="Breadcrumb">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
       <ol className="inline-flex items-center space-x-1 md:space-x-2">
         <li className="inline-flex items-center">
           <Link

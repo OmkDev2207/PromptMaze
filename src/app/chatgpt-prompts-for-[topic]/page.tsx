@@ -1,4 +1,4 @@
-// src/app/prompts-for-[topic]/page.tsx
+// src/app/chatgpt-prompts-for-[topic]/page.tsx
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -198,13 +198,18 @@ export async function generateMetadata({ params }: ProgrammaticPageProps): Promi
     title: config.metaTitle,
     description: config.seoDescription,
     alternates: {
-      canonical: `/prompts-for-${config.slug}`,
+      canonical: `/chatgpt-prompts-for-${config.slug}`,
     },
     openGraph: {
       title: config.metaTitle,
       description: config.seoDescription,
-      url: `https://promptmaze.vercel.app/prompts-for-${config.slug}`,
+      url: `https://promptmaze.vercel.app/chatgpt-prompts-for-${config.slug}`,
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: config.metaTitle,
+      description: config.seoDescription,
     },
   };
 }
@@ -350,7 +355,7 @@ export default async function ProgrammaticTopicPage({ params }: ProgrammaticPage
                 .map((t) => (
                   <Link
                     key={t.slug}
-                    href={`/prompts-for-${t.slug}`}
+                    href={`/chatgpt-prompts-for-${t.slug}`}
                     className="flex items-center justify-between text-xs font-semibold text-zinc-600 hover:text-indigo-655 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors hover:underline"
                   >
                     <span>{t.title.replace('ChatGPT Prompts for ', '')}</span>
