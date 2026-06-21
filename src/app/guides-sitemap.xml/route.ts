@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { guides } from '@/lib/data/guides';
 
 export async function GET() {
-  const baseUrl = 'https://promptmaze.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.com';
   const currentDate = new Date().toISOString().split('T')[0];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>

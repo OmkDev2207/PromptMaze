@@ -6,17 +6,19 @@ import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import CopyToast from "@/components/ui/CopyToast";
 import { Analytics } from "@vercel/analytics/next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://promptmaze.com";
+
 export const metadata: Metadata = {
   title: "PromptMaze | Best ChatGPT & AI Prompts for Professionals",
   description: "Curated ChatGPT and AI prompts for teachers, developers, marketers, recruiters, students, and accountants. Standardized templates, sitemaps, and engineering guides.",
-  metadataBase: new URL("https://promptmaze.com"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "PromptMaze | Best ChatGPT & AI Prompts for Professionals",
     description: "Curated ChatGPT and AI prompts for teachers, developers, marketers, recruiters, students, and accountants.",
-    url: "https://promptmaze.com",
+    url: siteUrl,
     siteName: "PromptMaze",
     locale: "en_US",
     type: "website",
