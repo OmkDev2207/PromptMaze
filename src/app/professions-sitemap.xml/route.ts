@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 import { professions } from '@/lib/data/professions';
 import { categories } from '@/lib/data/categories';
 import { emailCategories } from '@/lib/data/emails';
@@ -87,6 +89,16 @@ export async function GET() {
   });
 
   xml += '\n</urlset>';
+
+  // Write statically to public directory during build
+  try {
+    const publicDir = path.join(process.cwd(), 'public');
+    if (fs.existsSync(publicDir)) {
+      fs.writeFileSync(path.join(publicDir, 'professions-sitemap.xml'), xml, 'utf-8');
+    }
+  } catch (e) {
+    console.error('Failed to write professions-sitemap.xml:', e);
+  }
 
   return new NextResponse(xml, {
     headers: {

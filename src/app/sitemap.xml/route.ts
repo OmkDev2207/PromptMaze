@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.vercel.app';
@@ -15,6 +17,16 @@ export async function GET() {
     <loc>${baseUrl}/guides-sitemap.xml</loc>
   </sitemap>
 </sitemapindex>`.trim();
+
+  // Write statically to public directory during build
+  try {
+    const publicDir = path.join(process.cwd(), 'public');
+    if (fs.existsSync(publicDir)) {
+      fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), xml, 'utf-8');
+    }
+  } catch (e) {
+    console.error('Failed to write sitemap.xml:', e);
+  }
 
   return new NextResponse(xml, {
     headers: {

@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 import { guides } from '@/lib/data/guides';
 
 export async function GET() {
@@ -20,6 +22,16 @@ export async function GET() {
   });
 
   xml += '\n</urlset>';
+
+  // Write statically to public directory during build
+  try {
+    const publicDir = path.join(process.cwd(), 'public');
+    if (fs.existsSync(publicDir)) {
+      fs.writeFileSync(path.join(publicDir, 'guides-sitemap.xml'), xml, 'utf-8');
+    }
+  } catch (e) {
+    console.error('Failed to write guides-sitemap.xml:', e);
+  }
 
   return new NextResponse(xml, {
     headers: {
