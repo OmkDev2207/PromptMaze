@@ -1,4 +1,5 @@
 import type { Prompt } from '@/types';
+import { emailPrompts } from './emails';
 
 const staticPrompts: Prompt[] = [
   // ===================== TEACHERS — LESSON PLANNING =====================
@@ -628,7 +629,22 @@ categories.forEach((cat) => {
   });
 });
 
-export const prompts: Prompt[] = [...staticPrompts, ...generatedPrompts];
+const mappedEmailPrompts: Prompt[] = emailPrompts.map(ep => ({
+  id: ep.id,
+  slug: ep.slug,
+  title: ep.title,
+  content: ep.content,
+  description: ep.description,
+  useCase: ep.description,
+  professionSlug: 'emails',
+  categorySlug: ep.categorySlug,
+  difficulty: 'intermediate' as const,
+  exampleOutput: ep.exampleOutput,
+  tags: ep.tags,
+  featured: true
+}));
+
+export const prompts: Prompt[] = [...staticPrompts, ...generatedPrompts, ...mappedEmailPrompts];
 
 // ========== QUERY FUNCTIONS ==========
 

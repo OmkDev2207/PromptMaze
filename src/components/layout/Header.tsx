@@ -173,6 +173,17 @@ export default function Header() {
             </Link>
 
             <Link
+              href="/emails"
+              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                isActive('/emails')
+                  ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-50 dark:hover:bg-zinc-900'
+              }`}
+            >
+              Email Prompts
+            </Link>
+
+            <Link
               href="/generator"
               className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
                 isActive('/generator')
@@ -281,6 +292,16 @@ export default function Header() {
                 }`}
               >
                 AI Guides
+              </Link>
+              <Link
+                href="/emails"
+                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
+                  isActive('/emails')
+                    ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
+                    : 'text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800'
+                }`}
+              >
+                Email Prompts
               </Link>
               <Link
                 href="/generator"

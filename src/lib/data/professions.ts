@@ -450,6 +450,20 @@ export const professions: Profession[] = [
     metaDescription: 'Discover 100+ AI prompts for writers including story generation, character creation, world building, and novel writing.',
     featured: true,
   },
+  {
+    id: 'emails',
+    slug: 'emails',
+    name: 'Email Writers',
+    description: 'AI prompts for professional emails, sales outreach, follow-ups, and customer support.',
+    longDescription: 'Explore optimized ChatGPT templates for business emails, networking outreach, sales campaigns, and customer support resolutions.',
+    icon: '✉️',
+    color: 'indigo',
+    gradient: 'from-indigo-500 to-blue-600',
+    bgGradient: 'bg-gradient-to-br from-indigo-500 to-blue-600',
+    metaTitle: 'Email ChatGPT Prompts (2026) | Best AI Email Templates',
+    metaDescription: 'Discover 100+ copy-paste ChatGPT email prompts for customer care, sales outreach, cold networking, and job follow-ups.',
+    featured: false,
+  },
 ];
 
 export function getProfessionBySlug(slug: string): Profession | undefined {

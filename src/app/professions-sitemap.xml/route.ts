@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { professions } from '@/lib/data/professions';
 import { categories } from '@/lib/data/categories';
+import { emailCategories } from '@/lib/data/emails';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.vercel.app';
@@ -10,6 +11,7 @@ export async function GET() {
   const coreUrls = [
     `${baseUrl}/`,
     `${baseUrl}/guides`,
+    `${baseUrl}/emails`,
     `${baseUrl}/generator`,
     `${baseUrl}/search`,
     `${baseUrl}/about`,
@@ -50,6 +52,37 @@ export async function GET() {
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>`;
+  });
+
+  // Append email categories
+  emailCategories.forEach((cat) => {
+    xml += `
+  <url>
+    <loc>${baseUrl}/emails/${cat.slug}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+  });
+
+  // Append programmatic SEO topics
+  const topics = [
+    'python-developers',
+    'react-developers',
+    'seo',
+    'linkedin',
+    'resumes',
+    'interviews'
+  ];
+
+  topics.forEach((t) => {
+    xml += `
+  <url>
+    <loc>${baseUrl}/prompts-for-${t}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>`;
   });
 

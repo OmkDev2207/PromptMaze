@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { searchPrompts } from '@/lib/data/prompts';
+import { prompts } from '@/lib/data/prompts';
 import { searchGuides } from '@/lib/data/guides';
+import { fuzzySearchPrompts } from '@/lib/utils/search';
+import { professions } from '@/lib/data/professions';
 import PromptCard from '@/components/prompt/PromptCard';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
@@ -32,7 +34,7 @@ function SearchPageContent() {
   };
 
   // Perform search
-  const promptsResults = searchPrompts(query, selectedProfession === 'all' ? undefined : selectedProfession)
+  const promptsResults = fuzzySearchPrompts(prompts, query, selectedProfession === 'all' ? undefined : selectedProfession)
     .filter(p => selectedDifficulty === 'all' || p.difficulty === selectedDifficulty);
 
   const guidesResults = searchGuides(query)
@@ -96,12 +98,11 @@ function SearchPageContent() {
           className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-700 shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
         >
           <option value="all">All Professions</option>
-          <option value="teachers">Teachers</option>
-          <option value="developers">Developers</option>
-          <option value="marketers">Marketers</option>
-          <option value="recruiters">Recruiters</option>
-          <option value="students">Students</option>
-          <option value="accountants">Accountants</option>
+          {professions.map((p) => (
+            <option key={p.slug} value={p.slug}>
+              {p.name}
+            </option>
+          ))}
         </select>
 
         {/* Difficulty Filter */}

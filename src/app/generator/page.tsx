@@ -1,15 +1,32 @@
+// src/app/generator/page.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
-import { Cpu, Copy, Check, Sparkles, GraduationCap, Code, Megaphone, Users, BookOpen, BarChart3, HelpCircle, RefreshCw, PenTool, Briefcase, Headphones, Rocket, UserCheck, Laptop } from 'lucide-react';
+import { getPromptBySlug } from '@/lib/data/prompts';
+import { getEmailPromptBySlug } from '@/lib/data/emails';
+import { Cpu, Copy, Check, Sparkles, GraduationCap, Code, Megaphone, Users, BookOpen, BarChart3, HelpCircle, RefreshCw, PenTool, Briefcase, Headphones, Rocket, UserCheck, Laptop, ArrowLeft } from 'lucide-react';
 
-export default function PromptGeneratorPage() {
+function GeneratorContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const templateSlug = searchParams.get('template') || '';
+
+  // Find custom template if slug is provided
+  const customPromptObj = templateSlug
+    ? (getPromptBySlug(templateSlug) || getEmailPromptBySlug(templateSlug))
+    : undefined;
+
   const [profession, setProfession] = useState('teachers');
   const [task, setTask] = useState('');
   const [goal, setGoal] = useState('');
   const [copied, setCopied] = useState(false);
+
+  // For custom templates: map of placeholder -> value
+  const [placeholderValues, setPlaceholderValues] = useState<Record<string, string>>({});
 
   const templates: Record<string, string> = {
     teachers: `You are an expert educator and instructional designer. 
@@ -122,7 +139,7 @@ Please compile a structured HR document containing:
 3. Frequently Asked Questions (FAQs) for employees
 4. Implementation checklist for department leads.`,
 
-    'freelancers': `You are a successful independent freelancer and business operator.
+    freelancers: `You are a successful independent freelancer and business operator.
 Your task is to scope or proposal-draft: [TASK]
 The client requirements and fee constraints are: [GOAL]
 
@@ -133,7 +150,34 @@ Please generate a comprehensive freelance scope kit including:
 4. Scope change/revision policy terms.`
   };
 
+  const extractPlaceholders = (text: string): string[] => {
+    if (!text) return [];
+    const matches = Array.from(text.matchAll(/\[([^\]]+)\]/g)).map(m => m[1]);
+    return Array.from(new Set(matches));
+  };
+
+  // Reset/populate placeholder fields when custom template changes
+  useEffect(() => {
+    if (customPromptObj) {
+      const placeholders = extractPlaceholders(customPromptObj.content);
+      const initialVals: Record<string, string> = {};
+      placeholders.forEach(p => {
+        initialVals[p] = '';
+      });
+      setPlaceholderValues(initialVals);
+    }
+  }, [templateSlug, customPromptObj?.id]);
+
   const compilePrompt = () => {
+    if (customPromptObj) {
+      let compiled = customPromptObj.content;
+      Object.entries(placeholderValues).forEach(([placeholder, val]) => {
+        const replacement = val.trim() || `[${placeholder}]`;
+        compiled = compiled.replaceAll(`[${placeholder}]`, replacement);
+      });
+      return compiled;
+    }
+
     const baseTemplate = templates[profession] || '';
     let compiled = baseTemplate;
 
@@ -153,26 +197,52 @@ Please generate a comprehensive freelance scope kit including:
   };
 
   const handleReset = () => {
-    setTask('');
-    setGoal('');
+    if (customPromptObj) {
+      const resetVals: Record<string, string> = {};
+      extractPlaceholders(customPromptObj.content).forEach(p => {
+        resetVals[p] = '';
+      });
+      setPlaceholderValues(resetVals);
+    } else {
+      setTask('');
+      setGoal('');
+    }
   };
 
-  const breadcrumbs = [{ label: 'Prompt Generator' }];
+  const handleBackToStandard = () => {
+    router.push('/generator');
+  };
+
+  const breadcrumbs = customPromptObj
+    ? [{ label: 'Prompt Generator', href: '/generator' }, { label: customPromptObj.title }]
+    : [{ label: 'Prompt Generator' }];
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      
       {/* Breadcrumbs */}
       <Breadcrumbs items={breadcrumbs} />
 
       {/* Header */}
-      <div className="mt-4 border-b border-zinc-200 pb-8 dark:border-zinc-800">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          Interactive Prompt Generator
-        </h1>
-        <p className="mt-2 text-zinc-500 dark:text-zinc-400">
-          Create optimized, structured ChatGPT and AI prompts using role-based framework templates. No API keys required.
-        </p>
+      <div className="mt-4 border-b border-zinc-200 pb-8 dark:border-zinc-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            {customPromptObj ? 'Customize Template' : 'Interactive Prompt Generator'}
+          </h1>
+          <p className="mt-2 text-zinc-505 text-sm text-zinc-500 dark:text-zinc-400">
+            {customPromptObj
+              ? `Fill in the variables below to compile the "${customPromptObj.title}" template in real time.`
+              : 'Create optimized, structured ChatGPT and AI prompts using role-based framework templates. No API keys required.'}
+          </p>
+        </div>
+        {customPromptObj && (
+          <button
+            onClick={handleBackToStandard}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 transition-all dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-850"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Standard Generators
+          </button>
+        )}
       </div>
 
       {/* AdSense Top slot */}
@@ -180,94 +250,119 @@ Please generate a comprehensive freelance scope kit including:
 
       {/* Layout Split */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
-        
         {/* Input Form Column (Left) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5">
+            <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5 border-b border-zinc-100 pb-3 dark:border-zinc-800/80">
               <Sparkles className="h-5 w-5 text-indigo-500" />
-              Configure Inputs
+              {customPromptObj ? 'Template Variables' : 'Configure Inputs'}
             </h2>
 
-            <div className="mt-6 flex flex-col gap-5">
-              
-              {/* Select Profession */}
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-                  1. Select Profession
-                </label>
-                <div className="mt-2 grid grid-cols-2 gap-2">
-                  {[
-                    { id: 'teachers', name: 'Teacher', icon: <GraduationCap className="h-4 w-4" /> },
-                    { id: 'developers', name: 'Developer', icon: <Code className="h-4 w-4" /> },
-                    { id: 'marketers', name: 'Marketer', icon: <Megaphone className="h-4 w-4" /> },
-                    { id: 'recruiters', name: 'Recruiter', icon: <Users className="h-4 w-4" /> },
-                    { id: 'students', name: 'Student', icon: <BookOpen className="h-4 w-4" /> },
-                    { id: 'accountants', name: 'Accountant', icon: <BarChart3 className="h-4 w-4" /> },
-                    { id: 'content-writers', name: 'Writer', icon: <PenTool className="h-4 w-4" /> },
-                    { id: 'project-managers', name: 'PM', icon: <Briefcase className="h-4 w-4" /> },
-                    { id: 'customer-support', name: 'Support', icon: <Headphones className="h-4 w-4" /> },
-                    { id: 'startup-founders', name: 'Founder', icon: <Rocket className="h-4 w-4" /> },
-                    { id: 'hr-professionals', name: 'HR', icon: <UserCheck className="h-4 w-4" /> },
-                    { id: 'freelancers', name: 'Freelancer', icon: <Laptop className="h-4 w-4" /> }
-                  ].map((p) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => setProfession(p.id)}
-                      className={`flex items-center gap-2 rounded-xl border p-3 text-sm font-semibold transition-all ${
-                        profession === p.id
-                          ? 'border-indigo-600 bg-indigo-50 text-indigo-750 dark:border-indigo-500 dark:bg-indigo-950/40 dark:text-indigo-300'
-                          : 'border-zinc-200 bg-white text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
-                      }`}
-                    >
-                      {p.icon}
-                      <span>{p.name}</span>
-                    </button>
-                  ))}
+            {customPromptObj ? (
+              /* Dynamic Placeholders Form */
+              <div className="mt-6 flex flex-col gap-5">
+                {extractPlaceholders(customPromptObj.content).map((placeholder) => (
+                  <div key={placeholder}>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                      {placeholder}
+                    </label>
+                    <input
+                      type="text"
+                      value={placeholderValues[placeholder] || ''}
+                      onChange={(e) =>
+                        setPlaceholderValues((prev) => ({
+                          ...prev,
+                          [placeholder]: e.target.value
+                        }))
+                      }
+                      placeholder={`Enter ${placeholder.toLowerCase()}...`}
+                      className="mt-2 w-full rounded-xl border border-zinc-200 bg-white p-3 text-sm text-zinc-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
+                    />
+                  </div>
+                ))}
+                {extractPlaceholders(customPromptObj.content).length === 0 && (
+                  <p className="text-xs text-zinc-400">No custom variables to fill for this template.</p>
+                )}
+              </div>
+            ) : (
+              /* Standard Form */
+              <div className="mt-6 flex flex-col gap-5">
+                {/* Select Profession */}
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
+                    1. Select Profession
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { id: 'teachers', name: 'Teacher', icon: <GraduationCap className="h-4 w-4" /> },
+                      { id: 'developers', name: 'Developer', icon: <Code className="h-4 w-4" /> },
+                      { id: 'marketers', name: 'Marketer', icon: <Megaphone className="h-4 w-4" /> },
+                      { id: 'recruiters', name: 'Recruiter', icon: <Users className="h-4 w-4" /> },
+                      { id: 'students', name: 'Student', icon: <BookOpen className="h-4 w-4" /> },
+                      { id: 'accountants', name: 'Accountant', icon: <BarChart3 className="h-4 w-4" /> },
+                      { id: 'content-writers', name: 'Writer', icon: <PenTool className="h-4 w-4" /> },
+                      { id: 'project-managers', name: 'PM', icon: <Briefcase className="h-4 w-4" /> },
+                      { id: 'customer-support', name: 'Support', icon: <Headphones className="h-4 w-4" /> },
+                      { id: 'startup-founders', name: 'Founder', icon: <Rocket className="h-4 w-4" /> },
+                      { id: 'hr-professionals', name: 'HR', icon: <UserCheck className="h-4 w-4" /> },
+                      { id: 'freelancers', name: 'Freelancer', icon: <Laptop className="h-4 w-4" /> }
+                    ].map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => setProfession(p.id)}
+                        className={`flex items-center gap-2 rounded-xl border p-2.5 text-xs font-semibold transition-all ${
+                          profession === p.id
+                            ? 'border-indigo-600 bg-indigo-50 text-indigo-750 dark:border-indigo-500 dark:bg-indigo-950/40 dark:text-indigo-300'
+                            : 'border-zinc-200 bg-white text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                        }`}
+                      >
+                        {p.icon}
+                        <span>{p.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Task Input */}
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                    2. What is the Task?
+                  </label>
+                  <textarea
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                    placeholder="e.g. Design a quiz on thermodynamics, rewrite an Express route, write facebook ad copy..."
+                    className="mt-2 h-24 w-full resize-none rounded-xl border border-zinc-200 bg-white p-3 text-sm text-zinc-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
+                  />
+                </div>
+
+                {/* Goal Input */}
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                    3. What is the Goal / Constraint?
+                  </label>
+                  <textarea
+                    value={goal}
+                    onChange={(e) => setGoal(e.target.value)}
+                    placeholder="e.g. Needs to be suitable for 8th graders, must avoid external dependencies, target CTR is 5%..."
+                    className="mt-2 h-24 w-full resize-none rounded-xl border border-zinc-200 bg-white p-3 text-sm text-zinc-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
+                  />
                 </div>
               </div>
+            )}
 
-              {/* Task Input */}
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-                  2. What is the Task?
-                </label>
-                <textarea
-                  value={task}
-                  onChange={(e) => setTask(e.target.value)}
-                  placeholder="e.g. Design a quiz on thermodynamics, rewrite an Express route, write facebook ad copy..."
-                  className="mt-2 h-24 w-full resize-none rounded-xl border border-zinc-200 bg-white p-3 text-sm text-zinc-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
-                />
-              </div>
-
-              {/* Goal Input */}
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-                  3. What is the Goal / Constraint?
-                </label>
-                <textarea
-                  value={goal}
-                  onChange={(e) => setGoal(e.target.value)}
-                  placeholder="e.g. Needs to be suitable for 8th graders, must avoid external dependencies, target CTR is 5%..."
-                  className="mt-2 h-24 w-full resize-none rounded-xl border border-zinc-200 bg-white p-3 text-sm text-zinc-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
-                />
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-3 mt-2">
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-zinc-200 py-3 text-sm font-semibold text-zinc-600 hover:bg-zinc-50 active:scale-[0.98] transition-all dark:border-zinc-800 dark:text-zinc-350 dark:hover:bg-zinc-850"
-                >
-                  <RefreshCw className="h-4 w-4" />
-                  Reset Fields
-                </button>
-              </div>
-
+            {/* Action Buttons */}
+            <div className="flex gap-3 mt-6 border-t border-zinc-100 pt-4 dark:border-zinc-800/80">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-zinc-200 py-3 text-sm font-semibold text-zinc-650 hover:bg-zinc-50 active:scale-[0.98] transition-all dark:border-zinc-800 dark:text-zinc-350 dark:hover:bg-zinc-850"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Reset Fields
+              </button>
             </div>
-
           </div>
         </div>
 
@@ -296,14 +391,14 @@ Please generate a comprehensive freelance scope kit including:
 
             {/* Bottom Actions */}
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-100 pt-4 dark:border-zinc-850">
-              <p className="text-xs text-zinc-400">
-                Copy this prompt into ChatGPT or Claude to test it.
+              <p className="text-xs text-zinc-405 text-zinc-400">
+                Copy this prompt into ChatGPT or Claude to use it.
               </p>
-              
+
               <button
                 type="button"
                 onClick={handleCopy}
-                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-6 py-3 text-sm font-semibold shadow-md transition-all active:scale-[0.98] ${
+                className={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl px-6 py-3 text-sm font-bold shadow-md transition-all active:scale-[0.98] ${
                   copied
                     ? 'bg-emerald-500 text-white shadow-emerald-500/20'
                     : 'bg-indigo-600 text-white shadow-indigo-500/20 hover:bg-indigo-500'
@@ -322,15 +417,29 @@ Please generate a comprehensive freelance scope kit including:
                 )}
               </button>
             </div>
-
           </div>
         </div>
-
       </div>
 
       {/* AdSense Bottom slot */}
       <AdSenseSlot slot="generator-bottom" />
-
     </div>
+  );
+}
+
+export default function PromptGeneratorPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="mx-auto w-full max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+          <div className="animate-pulse flex flex-col items-center gap-4">
+            <div className="h-8 w-64 bg-zinc-200 rounded dark:bg-zinc-800"></div>
+            <div className="h-4 w-96 bg-zinc-200 rounded dark:bg-zinc-800"></div>
+          </div>
+        </div>
+      }
+    >
+      <GeneratorContent />
+    </Suspense>
   );
 }
