@@ -228,7 +228,7 @@ Please generate a comprehensive freelance scope kit including:
           <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             {customPromptObj ? 'Customize Template' : 'Interactive Prompt Generator'}
           </h1>
-          <p className="mt-2 text-zinc-505 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
             {customPromptObj
               ? `Fill in the variables below to compile the "${customPromptObj.title}" template in real time.`
               : 'Create optimized, structured ChatGPT and AI prompts using role-based framework templates. No API keys required.'}
@@ -237,7 +237,7 @@ Please generate a comprehensive freelance scope kit including:
         {customPromptObj && (
           <button
             onClick={handleBackToStandard}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 transition-all dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-850"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 transition-all dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
           >
             <ArrowLeft className="h-4 w-4" />
             Standard Generators
@@ -314,7 +314,7 @@ Please generate a comprehensive freelance scope kit including:
                         className={`flex items-center gap-2 rounded-xl border p-2.5 text-xs font-semibold transition-all ${
                           profession === p.id
                             ? 'border-indigo-600 bg-indigo-50 text-indigo-750 dark:border-indigo-500 dark:bg-indigo-950/40 dark:text-indigo-300'
-                            : 'border-zinc-200 bg-white text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                            : 'border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/40 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                         }`}
                       >
                         {p.icon}
@@ -357,7 +357,7 @@ Please generate a comprehensive freelance scope kit including:
               <button
                 type="button"
                 onClick={handleReset}
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-zinc-200 py-3 text-sm font-semibold text-zinc-650 hover:bg-zinc-50 active:scale-[0.98] transition-all dark:border-zinc-800 dark:text-zinc-350 dark:hover:bg-zinc-850"
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white py-3 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 active:scale-[0.98] transition-all dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
                 <RefreshCw className="h-4 w-4" />
                 Reset Fields
@@ -390,7 +390,7 @@ Please generate a comprehensive freelance scope kit including:
             </div>
 
             {/* Bottom Actions */}
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-100 pt-4 dark:border-zinc-850">
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-100 pt-4 dark:border-zinc-800">
               <p className="text-xs text-zinc-405 text-zinc-400">
                 Copy this prompt into ChatGPT or Claude to use it.
               </p>
