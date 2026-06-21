@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       
       <div className="prose prose-zinc dark:prose-invert mt-8 space-y-6 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
-          At PromptMaze, accessible from promptmaze.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by PromptMaze and how we use it.
+          At PromptMaze, accessible from promptmaze.vercel.app, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by PromptMaze and how we use it.
         </p>
         
         <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-6">Log Files</h2>
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-6">Google DoubleClick DART Cookie</h2>
         <p>
-          Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to promptmaze.com and other sites on the internet.
+          Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to promptmaze.vercel.app and other sites on the internet.
         </p>
 
         <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-6">Consent</h2>

@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
     openGraph: {
       title: `${guide.title} | PromptMaze Guides`,
       description: guide.description,
-      url: `https://promptmaze.com/guides/${guide.slug}`,
+      url: `https://promptmaze.vercel.app/guides/${guide.slug}`,
       type: 'article',
       publishedTime: guide.publishedAt,
     },
@@ -88,14 +88,14 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
     'author': {
       '@type': 'Organization',
       'name': 'PromptMaze Team',
-      'url': 'https://promptmaze.com',
+      'url': 'https://promptmaze.vercel.app',
     },
     'publisher': {
       '@type': 'Organization',
       'name': 'PromptMaze',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://promptmaze.com/logo.png',
+        'url': 'https://promptmaze.vercel.app/logo.png',
       },
     },
   };

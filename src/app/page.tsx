@@ -88,10 +88,10 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': 'PromptMaze',
-    'url': 'https://promptmaze.com',
+    'url': 'https://promptmaze.vercel.app',
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': 'https://promptmaze.com/search?q={search_term_string}',
+      'target': 'https://promptmaze.vercel.app/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   };

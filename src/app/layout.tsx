@@ -6,7 +6,7 @@ import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import CopyToast from "@/components/ui/CopyToast";
 import { Analytics } from "@vercel/analytics/next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://promptmaze.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://promptmaze.vercel.app";
 
 export const metadata: Metadata = {
   title: "PromptMaze | Best ChatGPT & AI Prompts for Professionals",

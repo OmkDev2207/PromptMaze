@@ -3,7 +3,7 @@ import { professions } from '@/lib/data/professions';
 import { categories } from '@/lib/data/categories';
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://promptmaze.vercel.app';
   const currentDate = new Date().toISOString().split('T')[0];
 
   // Core URLs

@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: CategoryProps): Promise<Metad
     openGraph: {
       title,
       description,
-      url: `https://promptmaze.com/${p.slug}/${cat.slug}`,
+      url: `https://promptmaze.vercel.app/${p.slug}/${cat.slug}`,
       type: 'website',
     },
   };

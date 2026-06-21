@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: HubProps): Promise<Metadata> 
     openGraph: {
       title,
       description,
-      url: `https://promptmaze.com/${p.slug}`,
+      url: `https://promptmaze.vercel.app/${p.slug}`,
       type: 'website',
     },
   };
@@ -110,7 +110,7 @@ export default async function ProfessionHub({ params }: HubProps) {
     '@type': 'CollectionPage',
     'name': `${p.name} AI Prompts (2026) | Best ChatGPT Prompts for ${p.name}`,
     'description': p.description,
-    'url': `https://promptmaze.com/${p.slug}`,
+    'url': `https://promptmaze.vercel.app/${p.slug}`,
     'hasPart': prompts.slice(0, 10).map((pr) => ({
       '@type': 'HowTo',
       'name': pr.title,

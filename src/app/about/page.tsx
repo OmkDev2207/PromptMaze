@@ -40,7 +40,7 @@ export default function AboutPage() {
           If you have questions, feedback, or would like to submit a prompt pattern, feel free to contact us at:
           <br />
           <code className="font-mono text-xs bg-zinc-100 dark:bg-zinc-900 px-1.5 py-0.5 rounded text-indigo-650 dark:text-indigo-400 mt-2 inline-block">
-            support@promptmaze.com
+            support@promptmaze.vercel.app
           </code>
         </p>
       </div>

@@ -65,7 +65,7 @@ Create a `.env.local` file in the root directory:
 
 ```env
 # Production URL (used for sitemaps and metadata)
-NEXT_PUBLIC_SITE_URL=https://promptmaze.com
+NEXT_PUBLIC_SITE_URL=https://promptmaze.vercel.app
 
 # AdSense configurations
 NEXT_PUBLIC_ENABLE_ADSENSE=false

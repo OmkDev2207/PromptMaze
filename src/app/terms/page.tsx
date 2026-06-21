@@ -19,7 +19,7 @@ export default function TermsPage() {
       
       <div className="prose prose-zinc dark:prose-invert mt-8 space-y-6 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
-          Welcome to PromptMaze! These terms and conditions outline the rules and regulations for the use of PromptMaze&apos;s Website, located at promptmaze.com.
+          Welcome to PromptMaze! These terms and conditions outline the rules and regulations for the use of PromptMaze&apos;s Website, located at promptmaze.vercel.app.
         </p>
 
         <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mt-6">License & Usage</h2>
