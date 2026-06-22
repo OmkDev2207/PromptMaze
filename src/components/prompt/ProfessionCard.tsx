@@ -89,7 +89,7 @@ export default function ProfessionCard({ profession, promptCount, topPrompts }: 
               {topPrompts.map((p, idx) => (
                 <div
                   key={p.slug}
-                  className="flex items-center justify-between rounded-xl bg-zinc-50/50 p-2 hover:bg-zinc-50 border border-zinc-150/40 dark:bg-zinc-950/20 dark:hover:bg-zinc-950/40 dark:border-zinc-850/50"
+                  className="flex items-center justify-between rounded-xl bg-zinc-50/50 p-2 hover:bg-zinc-50 border border-zinc-200/40 dark:bg-zinc-950/20 dark:hover:bg-zinc-950/40 dark:border-zinc-800/50"
                 >
                   <Link
                     href={`/prompt/${p.slug}`}

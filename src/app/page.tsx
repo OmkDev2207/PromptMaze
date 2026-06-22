@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* Curated Prompt Collections Section */}
       <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 animate-fade-in-up">
-        <div className="text-center md:text-left border-b border-zinc-150 pb-3 dark:border-zinc-800">
+        <div className="text-center md:text-left border-b border-zinc-200 pb-3 dark:border-zinc-800">
           <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
             <FolderHeart className="h-5 w-5 text-violet-500" />
             Curated Prompt Collections
@@ -221,7 +221,7 @@ export default function Home() {
               3
             </div>
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 mb-2">Paste & Execute</h3>
-            <p className="text-xs text-zinc-550 dark:text-zinc-400 leading-relaxed font-semibold">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-semibold">
               Deploy our standardized role-and-constraint instructions to get perfect, hallucination-free AI answers.
             </p>
           </div>
@@ -291,7 +291,7 @@ export default function Home() {
 
       {/* Trending Prompts / Latest Packs Section */}
       <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 animate-fade-in-up">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-150 pb-3 dark:border-zinc-800/80">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 pb-3 dark:border-zinc-800/80">
           <div>
             <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-violet-500" />
@@ -320,7 +320,7 @@ export default function Home() {
       {/* AI Learning Guides Section - Vercel Dark Card theme */}
       <section className="bg-zinc-950 text-white py-16 dark:bg-zinc-900/20 dark:border-y dark:border-zinc-800/80 animate-fade-in-up">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-850 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-800 pb-4">
             <div>
               <h2 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
                 <BookMarked className="h-5 w-5 text-violet-400" />

@@ -31,7 +31,7 @@ export default function AboutPage() {
         About PromptMaze
       </h1>
       
-      <div className="prose prose-zinc dark:prose-invert mt-8 space-y-6 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-semibold">
+      <div className="prose prose-zinc dark:prose-invert mt-8 space-y-6 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-semibold">
         <p>
           Welcome to <strong>PromptMaze</strong>! We are dedicated to providing professionals, developers, educators, and students with high-quality, structured, and copy-pasteable AI prompt templates.
         </p>

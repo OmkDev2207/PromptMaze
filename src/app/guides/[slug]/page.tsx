@@ -269,7 +269,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
                   href={`/guides/${item.slug}`}
                   className="group flex flex-col gap-1 rounded-xl p-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
                 >
-                  <h4 className="text-xs font-bold text-zinc-850 group-hover:text-violet-600 dark:text-zinc-200 dark:group-hover:text-violet-400 transition-colors line-clamp-1">
+                  <h4 className="text-xs font-bold text-zinc-800 group-hover:text-violet-600 dark:text-zinc-200 dark:group-hover:text-violet-400 transition-colors line-clamp-1">
                     {item.title}
                   </h4>
                   <p className="text-[11px] text-zinc-500 line-clamp-2 dark:text-zinc-400">

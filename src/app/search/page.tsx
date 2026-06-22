@@ -115,7 +115,7 @@ function SearchPageContent() {
         
         {/* Related Searches */}
         <div className="mt-3 flex flex-wrap gap-2 items-center text-xs">
-          <span className="font-bold text-zinc-400 dark:text-zinc-505 dark:text-zinc-500 uppercase tracking-wider text-[10px]">Related Searches:</span>
+          <span className="font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider text-[10px]">Related Searches:</span>
           {[
             { name: 'Python Prompts', slug: 'python-developers' },
             { name: 'React Hooks', slug: 'react-developers' },
@@ -127,7 +127,7 @@ function SearchPageContent() {
             <Link
               key={item.slug}
               href={`/chatgpt-prompts-for-${item.slug}`}
-              className="rounded-lg bg-zinc-100 hover:bg-zinc-200 px-2.5 py-1 font-semibold text-zinc-650 hover:text-indigo-600 dark:bg-zinc-900/60 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:hover:text-indigo-400 transition-all duration-150"
+              className="rounded-lg bg-zinc-100 hover:bg-zinc-200 px-2.5 py-1 font-semibold text-zinc-600 hover:text-indigo-600 dark:bg-zinc-900/60 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:hover:text-indigo-400 transition-all duration-150"
             >
               🔍 {item.name}
             </Link>
@@ -136,7 +136,7 @@ function SearchPageContent() {
       </div>
 
       {/* Filters Bar */}
-      <div className="mt-6 flex flex-wrap items-center gap-4 border-b border-zinc-150 pb-6 dark:border-zinc-850">
+      <div className="mt-6 flex flex-wrap items-center gap-4 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         <div className="flex items-center gap-1.5 text-sm text-zinc-500">
           <Filter className="h-4 w-4" />
           <span>Filters:</span>
@@ -169,7 +169,7 @@ function SearchPageContent() {
         </select>
 
         {query && (
-          <span className="text-xs text-zinc-450 italic">
+          <span className="text-xs text-zinc-400 italic">
             Found {totalResults} matches for &ldquo;{query}&rdquo;
           </span>
         )}
@@ -249,7 +249,7 @@ function SearchPageContent() {
                     <div>
                       <div className="flex items-center justify-between text-xs font-semibold text-zinc-400">
                         <span>{guide.readTimeMinutes} Min Read</span>
-                        <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] uppercase text-zinc-500 dark:bg-zinc-850 dark:text-zinc-400">
+                        <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] uppercase text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
                           {guide.difficulty}
                         </span>
                       </div>

@@ -225,7 +225,7 @@ export default async function ProfessionHub({ params }: HubProps) {
                           {count} Prompts
                         </span>
                       </div>
-                      <h3 className="mt-4 text-base font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-violet-650 dark:group-hover:text-violet-400 transition-colors">
+                      <h3 className="mt-4 text-base font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                         {cat.name}
                       </h3>
                       <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
@@ -289,11 +289,11 @@ export default async function ProfessionHub({ params }: HubProps) {
             </h2>
             <div className="space-y-4">
               {pseo.faqs.map((faq, idx) => (
-                <div key={idx} className="border-b border-zinc-100 dark:border-zinc-850 pb-3 last:border-0 last:pb-0">
+                <div key={idx} className="border-b border-zinc-100 dark:border-zinc-800 pb-3 last:border-0 last:pb-0">
                   <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                     {faq.question}
                   </h3>
-                  <p className="mt-1 text-xs text-zinc-550 dark:text-zinc-400 leading-relaxed font-semibold">
+                  <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-semibold">
                     {faq.answer}
                   </p>
                 </div>
@@ -339,7 +339,7 @@ export default async function ProfessionHub({ params }: HubProps) {
                     className="group flex flex-col gap-1 rounded-xl p-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
                   >
                     <span className="text-[9px] font-bold text-zinc-400 uppercase">{guide.readTimeMinutes} Min Read</span>
-                    <h4 className="text-xs font-bold text-zinc-855 group-hover:text-violet-600 dark:text-zinc-250 dark:group-hover:text-violet-400 transition-colors line-clamp-1">
+                    <h4 className="text-xs font-bold text-zinc-800 group-hover:text-violet-600 dark:text-zinc-250 dark:group-hover:text-violet-400 transition-colors line-clamp-1">
                       {guide.title}
                     </h4>
                     <p className="text-[11px] text-zinc-500 line-clamp-2 dark:text-zinc-400">

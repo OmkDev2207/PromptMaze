@@ -227,7 +227,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
         {prompt.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-lg bg-zinc-50 border border-zinc-200/60 px-2 py-1 text-xs text-zinc-550 dark:bg-zinc-950 dark:border-zinc-850 dark:text-zinc-400 font-medium"
+            className="rounded-lg bg-zinc-50 border border-zinc-200/60 px-2 py-1 text-xs text-zinc-600 dark:bg-zinc-950 dark:border-zinc-800 dark:text-zinc-400 font-medium"
           >
             #{tag}
           </span>
@@ -236,15 +236,15 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
 
       {/* Interactive Variable Customizer Form */}
       {variables.length > 0 && (
-        <div className="mt-6 rounded-2xl border border-zinc-150 bg-zinc-50/30 p-5 dark:border-zinc-800 dark:bg-zinc-950/20">
+        <div className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50/30 p-5 dark:border-zinc-800 dark:bg-zinc-950/20">
           <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-zinc-800/80">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-650 dark:text-zinc-300 flex items-center gap-1.5">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5">
               <Sparkles className="h-4 w-4 text-violet-500 fill-violet-500/20" />
               Interactive Variable Filler
             </h3>
             <button
               onClick={() => setVariableValues({})}
-              className="text-[10px] font-bold text-zinc-400 hover:text-zinc-650 dark:hover:text-zinc-300 transition-colors uppercase tracking-wider"
+              className="text-[10px] font-bold text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors uppercase tracking-wider"
             >
               Reset Fields
             </button>
@@ -262,7 +262,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
                     setVariableValues((prev) => ({ ...prev, [vName]: e.target.value }))
                   }
                   placeholder={`Enter ${vName.toLowerCase().replace(/_/g, ' ')}...`}
-                  className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-350"
+                  className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                 />
               </div>
             ))}
@@ -281,7 +281,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
           </div>
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 hover:text-zinc-950 dark:hover:text-zinc-250 transition-colors"
+            className="flex items-center gap-1.5 hover:text-zinc-950 dark:hover:text-zinc-300 transition-colors"
           >
             {copied ? (
               <>
@@ -314,7 +314,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
               className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold shadow-md transition-all active:scale-[0.98] ${
                 copied
                   ? 'bg-emerald-500 text-white shadow-emerald-500/20'
-                  : 'bg-zinc-50 border border-zinc-200 text-zinc-750 hover:bg-zinc-100 dark:bg-zinc-800 dark:border-zinc-750 dark:text-zinc-250 dark:hover:bg-zinc-750'
+                  : 'bg-zinc-50 border border-zinc-200 text-zinc-700 hover:bg-zinc-100 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-700'
               }`}
             >
               {copied ? (
@@ -334,7 +334,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
             <button
               onClick={handleUsePrompt}
               title="Copy prompt and open ChatGPT"
-              className="flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-750 hover:bg-zinc-50 shadow-sm transition-all active:scale-[0.98] dark:border-zinc-850 dark:bg-zinc-900 dark:text-zinc-250 dark:hover:bg-zinc-850"
+              className="flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 shadow-sm transition-all active:scale-[0.98] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               <ExternalLink className="h-4 w-4" />
               Use Prompt
@@ -353,7 +353,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
             <div className="relative" ref={exportRef}>
               <button
                 onClick={() => setShowExportMenu(!showExportMenu)}
-                className="flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-xs font-bold text-zinc-750 hover:bg-zinc-50 shadow-sm transition-all dark:border-zinc-850 dark:bg-zinc-900 dark:text-zinc-250 dark:hover:bg-zinc-850"
+                className="flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50 shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 title="Export template"
               >
                 <Download className="h-4 w-4" />
@@ -361,7 +361,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
                 <ChevronDown className="h-3 w-3" />
               </button>
               {showExportMenu && (
-                <div className="absolute bottom-full right-0 mb-2 w-48 rounded-xl border border-zinc-150 bg-white p-1.5 shadow-lg dark:border-zinc-800 dark:bg-zinc-950 z-50 animate-fade-in-up">
+                <div className="absolute bottom-full right-0 mb-2 w-48 rounded-xl border border-zinc-200 bg-white p-1.5 shadow-lg dark:border-zinc-800 dark:bg-zinc-950 z-50 animate-fade-in-up">
                   <button
                     onClick={handleExportTxt}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-bold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/60"
@@ -401,8 +401,8 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
               onClick={handleShare}
               className={`flex h-9 w-9 items-center justify-center rounded-xl border transition-all ${
                 shared
-                  ? 'bg-emerald-50 border-emerald-250 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400'
-                  : 'border-zinc-200 bg-white text-zinc-550 hover:bg-zinc-50 dark:border-zinc-850 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400'
+                  : 'border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800'
               }`}
               title="Share this prompt link"
             >
@@ -414,8 +414,8 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
               onClick={handleToggleSave}
               className={`flex h-9 w-9 items-center justify-center rounded-xl border transition-all ${
                 isSaved
-                  ? 'bg-indigo-50 border-indigo-250 text-indigo-750 dark:bg-indigo-950/30 dark:text-indigo-300'
-                  : 'border-zinc-200 bg-white text-zinc-550 hover:bg-zinc-50 dark:border-zinc-850 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800'
+                  ? 'bg-indigo-50 border-indigo-200 text-indigo-750 dark:bg-indigo-950/30 dark:text-indigo-300'
+                  : 'border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800'
               }`}
               title={isSaved ? "Saved" : "Save Prompt"}
             >
@@ -426,7 +426,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
       </div>
 
       {/* Helper Warning */}
-      <div className="mt-4 flex gap-2.5 rounded-xl bg-zinc-50/50 p-4 text-xs text-zinc-550 dark:bg-zinc-900/60 dark:text-zinc-400 border border-zinc-150 dark:border-zinc-850 leading-relaxed font-semibold">
+      <div className="mt-4 flex gap-2.5 rounded-xl bg-zinc-50/50 p-4 text-xs text-zinc-600 dark:bg-zinc-900/60 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 leading-relaxed font-semibold">
         <Info className="h-4 w-4 shrink-0 text-indigo-500" />
         <p>
           <strong>Usage Tip:</strong> Use the <strong>Interactive Variable Filler</strong> above to fill parameters in real-time. Click <strong>Use Prompt</strong> to copy the customized text and open ChatGPT.
@@ -434,7 +434,7 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
       </div>
 
       {/* Viral Hook Share Section */}
-      <div className="mt-8 border-t border-zinc-150 pt-6 dark:border-zinc-800/80">
+      <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800/80">
         <h3 className="text-sm font-black text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5">
           <Share2 className="h-4.5 w-4.5 text-indigo-500" />
           Viral Promotion Hooks & Catchy Titles
@@ -445,14 +445,14 @@ export default function ClientPromptDetail({ prompt }: ClientPromptDetailProps) 
 
         <div className="mt-4 flex flex-col gap-3">
           {getSocialSharePosts().map((post, idx) => (
-            <div key={idx} className="flex flex-col gap-2 rounded-2xl border border-zinc-150 bg-zinc-50/20 p-4 dark:border-zinc-850 dark:bg-zinc-950/25">
+            <div key={idx} className="flex flex-col gap-2 rounded-2xl border border-zinc-200 bg-zinc-50/20 p-4 dark:border-zinc-800 dark:bg-zinc-950/25">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-black uppercase tracking-wider text-indigo-650 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-2 py-0.5 rounded">
                   {post.platform}
                 </span>
                 <button
                   onClick={() => handleCopyShareText(post.text, idx)}
-                  className="text-[10px] font-bold text-zinc-550 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 flex items-center gap-1"
+                  className="text-[10px] font-bold text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200 flex items-center gap-1"
                 >
                   {copiedShareIdx === idx ? (
                     <>

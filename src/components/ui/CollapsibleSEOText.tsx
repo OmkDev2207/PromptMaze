@@ -31,8 +31,8 @@ export default function CollapsibleSEOText({
         <div
           className="prose prose-zinc max-w-none dark:prose-invert
             prose-h2:text-base prose-h2:font-extrabold prose-h2:text-zinc-900 dark:prose-h2:text-zinc-50 prose-h2:mt-6 prose-h2:mb-2
-            prose-h3:text-sm prose-h3:font-bold prose-h3:text-zinc-850 dark:prose-h3:text-zinc-200 prose-h3:mt-4
-            prose-p:text-xs sm:prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-650 dark:prose-p:text-zinc-400 prose-p:mb-3"
+            prose-h3:text-sm prose-h3:font-bold prose-h3:text-zinc-800 dark:prose-h3:text-zinc-200 prose-h3:mt-4
+            prose-p:text-xs sm:prose-p:text-sm prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:mb-3"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
         

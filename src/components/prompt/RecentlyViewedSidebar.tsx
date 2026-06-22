@@ -48,7 +48,7 @@ export default function RecentlyViewedSidebar() {
           <Link
             key={`${item.slug}-${idx}`}
             href={`/prompt/${item.slug}`}
-            className="group flex items-center justify-between text-xs font-semibold text-zinc-650 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors"
+            className="group flex items-center justify-between text-xs font-semibold text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors"
           >
             <span className="truncate max-w-[200px]">{item.title}</span>
             <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />

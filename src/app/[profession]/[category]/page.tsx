@@ -165,7 +165,7 @@ export default async function CategoryPage({ params }: CategoryProps) {
         <div className="lg:col-span-2 flex flex-col gap-10">
           
           <section>
-            <div className="flex items-center justify-between border-b border-zinc-150 pb-3 dark:border-zinc-800/80">
+            <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800/80">
               <h2 className="text-base font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
                 Available Templates ({prompts.length})
               </h2>
@@ -199,11 +199,11 @@ export default async function CategoryPage({ params }: CategoryProps) {
             </h2>
             <div className="space-y-4">
               {faqs.map((faq, idx) => (
-                <div key={idx} className="border-b border-zinc-100 dark:border-zinc-850 pb-3 last:border-0 last:pb-0">
+                <div key={idx} className="border-b border-zinc-100 dark:border-zinc-800 pb-3 last:border-0 last:pb-0">
                   <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                     {faq.question}
                   </h3>
-                  <p className="mt-1 text-xs text-zinc-550 dark:text-zinc-400 leading-relaxed font-semibold">
+                  <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-semibold">
                     {faq.answer}
                   </p>
                 </div>

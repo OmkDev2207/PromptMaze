@@ -295,7 +295,7 @@ export default async function ProgrammaticTopicPage({ params }: ProgrammaticPage
             <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 mb-3">
               How to write better prompts for {config.slug.replace('-', ' ')}
             </h2>
-            <p className="text-sm leading-relaxed text-zinc-650 dark:text-zinc-400">
+            <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {config.intro}
             </p>
           </section>
@@ -329,7 +329,7 @@ export default async function ProgrammaticTopicPage({ params }: ProgrammaticPage
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 border-b border-zinc-100 pb-3 dark:border-zinc-800/80">
               Keyword Optimization
             </h3>
-            <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-450 leading-relaxed font-semibold">
+            <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-semibold">
               These workflow prompt packages target high-volume search parameters for maximum workflow automation. Standard copy-paste inputs ensure immediate compatibility across LLM frameworks.
             </p>
             <div className="mt-4 flex flex-wrap gap-1.5">
@@ -356,7 +356,7 @@ export default async function ProgrammaticTopicPage({ params }: ProgrammaticPage
                   <Link
                     key={t.slug}
                     href={`/chatgpt-prompts-for-${t.slug}`}
-                    className="flex items-center justify-between text-xs font-semibold text-zinc-600 hover:text-indigo-655 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors hover:underline"
+                    className="flex items-center justify-between text-xs font-semibold text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400 transition-colors hover:underline"
                   >
                     <span>{t.title.replace('ChatGPT Prompts for ', '')}</span>
                     <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
@@ -378,11 +378,11 @@ export default async function ProgrammaticTopicPage({ params }: ProgrammaticPage
         
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {config.faqs.map((faq, idx) => (
-            <div key={idx} className="rounded-2xl border border-zinc-150 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
+            <div key={idx} className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
               <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
                 {faq.question}
               </h3>
-              <p className="mt-2 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed">
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 {faq.answer}
               </p>
             </div>

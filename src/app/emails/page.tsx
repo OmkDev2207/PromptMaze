@@ -80,7 +80,7 @@ export default function EmailLibraryPage() {
       <Breadcrumbs items={breadcrumbs} />
 
       {/* Hero Section */}
-      <div className="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-650 to-violet-750 p-8 text-white shadow-xl sm:p-12 relative">
+      <div className="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-700 p-8 text-white shadow-xl sm:p-12 relative">
         <div className="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-white/10 blur-3xl pointer-events-none" />
         
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
@@ -131,7 +131,7 @@ export default function EmailLibraryPage() {
               className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-5 hover:border-zinc-300 hover:shadow-sm transition-all dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
             >
               <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-50 dark:bg-zinc-850">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-50 dark:bg-zinc-800">
                   {item.icon}
                 </div>
                 <h3 className="mt-4 text-base font-bold text-zinc-900 dark:text-zinc-50">
@@ -155,43 +155,43 @@ export default function EmailLibraryPage() {
           <HelpCircle className="h-6 w-6 text-indigo-500" />
           Frequently Asked Questions
         </h2>
-        <p className="mt-1 text-sm text-zinc-550 dark:text-zinc-450 font-medium">
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 font-medium">
           Got questions about using AI for email correspondence? Find clear answers below.
         </p>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border border-zinc-150 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
               Best ChatGPT prompts for email writing
             </h3>
-            <p className="mt-2 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               The best prompts define a specific role (e.g., Professional Business Communication Expert), explain the context of the email, state the task (e.g., draft a follow-up or cold pitch), and outline constraints like maintaining a polite tone, structure, next steps, and including a subject line.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-zinc-150 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
               How to write professional emails with AI
             </h3>
-            <p className="mt-2 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               To write professional emails with AI, structure your prompt with a role, context, task, and constraints. Define details such as the sender's and recipient's names, background points, and call to action to generate a customized draft in real time.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-zinc-150 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
               Email writing prompts
             </h3>
-            <p className="mt-2 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               An email writing prompt is a structured set of instructions given to large language models (like ChatGPT or Claude) to guide them in generating a specific type of professional, cold, or transactional email.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-zinc-150 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/80 dark:bg-zinc-900/60">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
               AI email generator prompts
             </h3>
-            <p className="mt-2 text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               An AI email generator prompt uses variables (like target recipient, meeting times, and budget constraints) to compile a prompt that outputs a structured email draft that is ready to copy and send.
             </p>
           </div>

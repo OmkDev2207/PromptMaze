@@ -26,7 +26,7 @@ export default function EmailLibraryClient() {
   return (
     <div className="flex flex-col gap-6">
       {/* Search and Filters Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-150 pb-6 dark:border-zinc-850">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         
         {/* Search Input */}
         <div className="relative flex-1 max-w-md">

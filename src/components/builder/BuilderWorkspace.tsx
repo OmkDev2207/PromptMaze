@@ -741,7 +741,7 @@ ${compiledPrompt}
 
             {/* Score rating summary */}
             <div>
-              <h3 className="text-sm font-extrabold text-zinc-850 dark:text-zinc-200 leading-snug">
+              <h3 className="text-sm font-extrabold text-zinc-800 dark:text-zinc-200 leading-snug">
                 {qualityScore < 45 ? 'Basic Draft Prompt' : qualityScore < 80 ? 'Intermediate Grade' : 'Expert Engineered'}
               </h3>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1 leading-normal">
@@ -781,7 +781,7 @@ ${compiledPrompt}
               onClick={() => setIsImproved(!isImproved)}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
                 isImproved
-                  ? 'bg-violet-100 text-violet-650 dark:bg-violet-950/40 dark:text-violet-400 ring-1 ring-violet-500/20'
+                  ? 'bg-violet-100 text-violet-600 dark:bg-violet-950/40 dark:text-violet-400 ring-1 ring-violet-500/20'
                   : 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400'
               }`}
             >
@@ -948,7 +948,7 @@ ${compiledPrompt}
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-1 rounded-xl bg-violet-650 text-white px-3 py-2.5 text-xs font-extrabold hover:bg-violet-600 transition-colors"
+                  className="inline-flex items-center justify-center gap-1 rounded-xl bg-violet-600 text-white px-3 py-2.5 text-xs font-extrabold hover:bg-violet-600 transition-colors"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   Create
@@ -1053,7 +1053,7 @@ ${compiledPrompt}
               </button>
               <button
                 onClick={handleSaveToCollection}
-                className="rounded-xl bg-violet-650 text-white px-5 py-2.5 text-xs font-black hover:bg-violet-600 transition-colors"
+                className="rounded-xl bg-violet-600 text-white px-5 py-2.5 text-xs font-black hover:bg-violet-600 transition-colors"
               >
                 Save Prompt
               </button>

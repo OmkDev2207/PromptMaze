@@ -1853,7 +1853,7 @@ Ask for their feedback, provide a placeholder for a 1-5 rating system link, and 
     slug: 'freelancers',
     name: 'Freelancer',
     icon: '💻',
-    gradient: 'from-violet-650 to-indigo-600',
+    gradient: 'from-violet-600 to-indigo-600',
     tasks: [
       {
         id: 'free-proposal',
