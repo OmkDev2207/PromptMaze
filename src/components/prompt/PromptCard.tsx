@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Copy, Check, ArrowRight } from 'lucide-react';
+import { Copy, Check, ArrowRight, Bookmark } from 'lucide-react';
 import type { Prompt } from '@/types';
 import PremiumBadge from '../ui/PremiumBadge';
 
@@ -13,6 +13,47 @@ interface PromptCardProps {
 
 export default function PromptCard({ prompt, isPremium = false }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('savedPrompts') || '[]');
+      setIsSaved(saved.includes(prompt.id));
+    } catch (e) {
+      console.error(e);
+    }
+
+    const handleSavedUpdate = () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('savedPrompts') || '[]');
+        setIsSaved(saved.includes(prompt.id));
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    window.addEventListener('saved-prompts-updated', handleSavedUpdate);
+    return () => window.removeEventListener('saved-prompts-updated', handleSavedUpdate);
+  }, [prompt.id]);
+
+  const handleToggleSave = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const saved = JSON.parse(localStorage.getItem('savedPrompts') || '[]');
+      let updated;
+      if (saved.includes(prompt.id)) {
+        updated = saved.filter((id: string) => id !== prompt.id);
+        setIsSaved(false);
+      } else {
+        updated = [...saved, prompt.id];
+        setIsSaved(true);
+      }
+      localStorage.setItem('savedPrompts', JSON.stringify(updated));
+      window.dispatchEvent(new Event('saved-prompts-updated'));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const handleCopy = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -50,6 +91,13 @@ export default function PromptCard({ prompt, isPremium = false }: PromptCardProp
 
   return (
     <div className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:border-zinc-300 hover:shadow-md transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700">
+      <button
+        onClick={handleToggleSave}
+        className="absolute top-4 right-4 p-1.5 rounded-full border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/70 text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors z-10 hover:shadow-sm"
+        title={isSaved ? "Remove from Saved" : "Save Prompt"}
+      >
+        <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-indigo-500 text-indigo-500' : ''}`} />
+      </button>
       <div>
         {/* Header Badges */}
         <div className="flex flex-wrap items-center gap-2 mb-4">

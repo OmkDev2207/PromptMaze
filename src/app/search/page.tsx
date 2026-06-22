@@ -9,7 +9,7 @@ import { professions } from '@/lib/data/professions';
 import PromptCard from '@/components/prompt/PromptCard';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
-import { Search, Compass, BookOpen, Filter, ArrowRight, HelpCircle } from 'lucide-react';
+import { Search, Compass, BookOpen, Filter, ArrowRight, HelpCircle, Bookmark } from 'lucide-react';
 import Link from 'next/link';
 
 import { Suspense } from 'react';
@@ -22,11 +22,32 @@ function SearchPageContent() {
   const [query, setQuery] = useState(initialQuery);
   const [selectedProfession, setSelectedProfession] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
-  const [activeTab, setActiveTab] = useState<'prompts' | 'guides'>('prompts');
+  const [activeTab, setActiveTab] = useState<'prompts' | 'guides' | 'saved'>('prompts');
+  const [savedPromptIds, setSavedPromptIds] = useState<string[]>([]);
 
   useEffect(() => {
     setQuery(initialQuery);
   }, [initialQuery]);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('savedPrompts') || '[]');
+      setSavedPromptIds(saved);
+    } catch (e) {
+      console.error(e);
+    }
+
+    const handleSavedUpdate = () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('savedPrompts') || '[]');
+        setSavedPromptIds(saved);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    window.addEventListener('saved-prompts-updated', handleSavedUpdate);
+    return () => window.removeEventListener('saved-prompts-updated', handleSavedUpdate);
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +62,16 @@ function SearchPageContent() {
     .filter(g => selectedProfession === 'all' || g.professionSlug === selectedProfession)
     .filter(g => selectedDifficulty === 'all' || g.difficulty === selectedDifficulty);
 
-  const totalResults = promptsResults.length + guidesResults.length;
+  const savedPromptsResults = prompts.filter(p => savedPromptIds.includes(p.id))
+    .filter(p => {
+      const q = query.trim().toLowerCase();
+      if (!q) return true;
+      return p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q));
+    })
+    .filter(p => selectedProfession === 'all' || p.professionSlug === selectedProfession)
+    .filter(p => selectedDifficulty === 'all' || p.difficulty === selectedDifficulty);
+
+  const totalResults = promptsResults.length + guidesResults.length + savedPromptsResults.length;
 
   const breadcrumbs = [{ label: 'Global Search' }];
 
@@ -167,6 +197,16 @@ function SearchPageContent() {
         >
           Guides ({guidesResults.length})
         </button>
+        <button
+          onClick={() => setActiveTab('saved')}
+          className={`border-b-2 px-6 py-3 text-sm font-bold transition-all ${
+            activeTab === 'saved'
+              ? 'border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400'
+              : 'border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300'
+          }`}
+        >
+          Saved ({savedPromptsResults.length})
+        </button>
       </div>
 
       {/* Results Rendering */}
@@ -189,7 +229,7 @@ function SearchPageContent() {
               </div>
             )}
           </div>
-        ) : (
+        ) : activeTab === 'guides' ? (
           <div>
             {guidesResults.length === 0 ? (
               <div className="text-center py-12">
@@ -235,6 +275,26 @@ function SearchPageContent() {
                       </Link>
                     </div>
                   </article>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div>
+            {savedPromptsResults.length === 0 ? (
+              <div className="text-center py-12 animate-fade-in-up">
+                <Bookmark className="mx-auto h-12 w-12 text-zinc-300 dark:text-zinc-700" />
+                <h3 className="mt-4 text-lg font-bold text-zinc-900 dark:text-zinc-50">No saved prompts found</h3>
+                <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto">
+                  {savedPromptIds.length === 0
+                    ? "Click the bookmark icon on any prompt card or prompt details page to save them here for quick access."
+                    : "No saved prompts match your active search filters."}
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {savedPromptsResults.map((prompt) => (
+                  <PromptCard key={prompt.id} prompt={prompt} />
                 ))}
               </div>
             )}

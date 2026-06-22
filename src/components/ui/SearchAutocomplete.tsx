@@ -8,6 +8,7 @@ import { professions } from '@/lib/data/professions';
 import { categories } from '@/lib/data/categories';
 import { prompts } from '@/lib/data/prompts';
 import { guides } from '@/lib/data/guides';
+import { synonymMap } from '@/lib/utils/search';
 
 interface SuggestionItem {
   id: string;
@@ -132,7 +133,21 @@ export default function SearchAutocomplete({
 
     // 3. Matches in Prompts
     const matchedPrompts = prompts
-      .filter(p => p.title.toLowerCase().includes(cleanQuery) || p.description.toLowerCase().includes(cleanQuery) || p.tags.some(t => t.toLowerCase().includes(cleanQuery)))
+      .filter(p => {
+        if (p.title.toLowerCase().includes(cleanQuery) || p.description.toLowerCase().includes(cleanQuery) || p.tags.some(t => t.toLowerCase().includes(cleanQuery))) {
+          return true;
+        }
+        const tokens = cleanQuery.split(/\s+/).filter(w => w.length > 1);
+        return tokens.some(token => {
+          const synonyms = synonymMap[token];
+          if (!synonyms) return false;
+          return synonyms.some(syn => 
+            p.title.toLowerCase().includes(syn) || 
+            p.description.toLowerCase().includes(syn) || 
+            p.tags.some(t => t.toLowerCase().includes(syn))
+          );
+        });
+      })
       .slice(0, 4)
       .map(p => ({
         id: p.id,

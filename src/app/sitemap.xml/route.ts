@@ -11,6 +11,9 @@ export async function GET() {
     <loc>${baseUrl}/professions-sitemap.xml</loc>
   </sitemap>
   <sitemap>
+    <loc>${baseUrl}/builder-sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
     <loc>${baseUrl}/prompts-sitemap.xml</loc>
   </sitemap>
   <sitemap>

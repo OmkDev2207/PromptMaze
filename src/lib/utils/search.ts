@@ -47,6 +47,19 @@ export interface ScoredPrompt {
   score: number;
 }
 
+export const synonymMap: Record<string, string[]> = {
+  resume: ['cv', 'curriculum vitae'],
+  cv: ['resume', 'curriculum vitae'],
+  job: ['employment', 'career', 'work', 'hiring', 'recruit'],
+  employment: ['job', 'career', 'work', 'hiring', 'recruit'],
+  email: ['mail', 'newsletter', 'outreach'],
+  mail: ['email', 'newsletter', 'outreach'],
+  teacher: ['educator', 'instructor', 'tutor', 'professor', 'lesson'],
+  educator: ['teacher', 'instructor', 'tutor', 'professor', 'lesson'],
+  marketing: ['promotion', 'ads', 'copywriting', 'advertising'],
+  promotion: ['marketing', 'ads', 'copywriting', 'advertising']
+};
+
 export function fuzzySearchPrompts(
   promptsList: Prompt[],
   query: string,
@@ -84,40 +97,60 @@ export function fuzzySearchPrompts(
     ].map(t => t.toLowerCase());
 
     queryTokens.forEach((qToken) => {
-      // 1. Exact Match / Substring Match in Title (Weight: 15)
-      if (prompt.title.toLowerCase().includes(qToken)) {
-        score += 15;
-      }
-      
-      // 2. Exact Match in Tags/Keywords (Weight: 8)
-      if (tagsAndKeywords.some(tag => tag === qToken || tag.includes(qToken))) {
-        score += 8;
+      // Build a list of words to test for this query token
+      const wordsToTest = [
+        { word: qToken, weightMultiplier: 1.0 }
+      ];
+
+      // Add synonyms if any
+      const synonyms = synonymMap[qToken];
+      if (synonyms) {
+        synonyms.forEach(syn => {
+          syn.split(/\s+/).forEach(word => {
+            const cleanWord = word.trim().toLowerCase();
+            if (cleanWord.length > 1 && cleanWord !== qToken && !wordsToTest.some(w => w.word === cleanWord)) {
+              wordsToTest.push({ word: cleanWord, weightMultiplier: 0.7 }); // Synonym matches get 70% weight
+            }
+          });
+        });
       }
 
-      // 3. Exact Match / Substring Match in Description (Weight: 3)
-      if (prompt.description.toLowerCase().includes(qToken)) {
-        score += 3;
-      }
-
-      // 4. Fuzzy Token Matching (Levenshtein Distance)
-      // Check title tokens
-      titleTokens.forEach((tToken) => {
-        const dist = getEditDistance(qToken, tToken);
-        // Allow 1 typo for short words (len <= 4) or 2 typos for longer words
-        const maxDist = qToken.length <= 4 ? 1 : 2;
-        if (dist > 0 && dist <= maxDist) {
-          // Add score inversely proportional to distance
-          score += (5 / dist);
+      wordsToTest.forEach(({ word, weightMultiplier }) => {
+        // 1. Exact Match / Substring Match in Title (Weight: 15)
+        if (prompt.title.toLowerCase().includes(word)) {
+          score += 15 * weightMultiplier;
         }
-      });
-
-      // Check tags and keywords for fuzzy match
-      tagsAndKeywords.forEach((tag) => {
-        const dist = getEditDistance(qToken, tag);
-        const maxDist = qToken.length <= 4 ? 1 : 2;
-        if (dist > 0 && dist <= maxDist) {
-          score += (3 / dist);
+        
+        // 2. Exact Match in Tags/Keywords (Weight: 8)
+        if (tagsAndKeywords.some(tag => tag === word || tag.includes(word))) {
+          score += 8 * weightMultiplier;
         }
+
+        // 3. Exact Match / Substring Match in Description (Weight: 3)
+        if (prompt.description.toLowerCase().includes(word)) {
+          score += 3 * weightMultiplier;
+        }
+
+        // 4. Fuzzy Token Matching (Levenshtein Distance)
+        // Check title tokens
+        titleTokens.forEach((tToken) => {
+          const dist = getEditDistance(word, tToken);
+          // Allow 1 typo for short words (len <= 4) or 2 typos for longer words
+          const maxDist = word.length <= 4 ? 1 : 2;
+          if (dist > 0 && dist <= maxDist) {
+            // Add score inversely proportional to distance
+            score += (5 / dist) * weightMultiplier;
+          }
+        });
+
+        // Check tags and keywords for fuzzy match
+        tagsAndKeywords.forEach((tag) => {
+          const dist = getEditDistance(word, tag);
+          const maxDist = word.length <= 4 ? 1 : 2;
+          if (dist > 0 && dist <= maxDist) {
+            score += (3 / dist) * weightMultiplier;
+          }
+        });
       });
     });
 

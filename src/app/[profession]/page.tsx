@@ -386,6 +386,7 @@ export default async function ProfessionHub({ params }: HubProps) {
         prompts={relatedPrompts}
         guides={relatedGuides}
         professions={relatedProfessions}
+        categories={categories.slice(0, 3)}
         title="More AI Knowledge Centers"
         subtitle="Browse other professional hubs, read comprehensive prompt engineering guides, or explore prompt macros."
       />

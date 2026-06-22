@@ -271,6 +271,7 @@ export default async function CategoryPage({ params }: CategoryProps) {
         prompts={relatedPrompts}
         guides={relatedGuides}
         professions={relatedProfessions}
+        categories={relatedCategories.slice(0, 3)}
         title="More AI resources"
         subtitle="Keep reading to improve your prompt workflows."
       />

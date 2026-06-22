@@ -525,17 +525,17 @@ import { categories } from './categories';
 const generatedPrompts: Prompt[] = [];
 
 const subjects = {
-  teachers: ['World History', 'Algebra 2', 'Chemistry', 'English Literature', 'Introduction to Coding', 'Creative Writing', 'Middle School Art', 'Physical Education', 'Biology', 'Geography'],
-  developers: ['React', 'TypeScript', 'Node.js', 'Python', 'Go', 'Docker', 'PostgreSQL', 'AWS', 'Next.js', 'Rust'],
-  marketers: ['SaaS Product Launch', 'E-commerce Brand', 'B2B Lead Generation', 'Local Service Business', 'Personal Brand', 'Real Estate Agency', 'Mobile App Marketing', 'Fitness Coach Marketing', 'Event Promotion', 'Non-profit Outreach'],
-  recruiters: ['Senior Software Engineer', 'Product Manager', 'Data Analyst', 'HR Business Partner', 'Customer Success Manager', 'Financial Analyst', 'Marketing Director', 'Sales Executive', 'UX Designer', 'DevOps Specialist'],
-  students: ['AP US History', 'Organic Chemistry', 'Calculus BC', 'Macroeconomics', 'Introduction to Philosophy', 'Environmental Science', 'Linear Algebra', 'World Literature', 'Psychology 101', 'Sociology'],
-  accountants: ['Corporate Tax Returns', 'Monthly Bookkeeping', 'Internal Audit Prep', 'Cash Flow Forecasting', 'Fixed Asset Depreciation', 'Inventory Valuation', 'Payroll Reconciliation', 'Budget vs Actual Variance', 'SaaS ARR Analysis', 'Mergers & Acquisitions Due Diligence'],
-  photographers: ['Studio Portraits', 'Wedding Events', 'Natural Light Scenarios', 'Product Visuals', 'Camera Rig Configs', 'Lightroom Presets', 'Model Directing', 'Commercial Advertising', 'Headshots', 'Fine Art Curation'],
-  'hr-professionals': ['Employee Onboarding', 'Conflict Resolution', 'Compliance Audits', 'Performance Appraisals', 'Policy Manuals', 'Benefits Enrollment', 'Diversity Training', 'Workspace Guidelines', 'Exit Interviews', 'Termination Protocols'],
-  'content-writers': ['SEO Blog Outlines', 'Headline Writing', 'Intro Hooks', 'Newsletter Layouts', 'Whitepapers', 'Case Studies', 'Ebooks', 'Competitor Audits', 'FAQ Copywriting', 'Style Editing'],
-  copywriters: ['AIDA Landing Pages', 'PAS Email Sequences', 'Facebook Ad Layouts', 'Sales Pitch Frameworks', 'Slogans', 'Pricing Pages', 'Upsell Funnels', 'SMS Marketing Copy', 'VSL Scripts', 'Testimonials Blocks'],
-  entrepreneurs: ['Business Models Validation', 'Pitch Deck Outlines', 'Competitor Matrix Profiles', 'Resource Allocations', 'Venture Capital Scenarios', 'SaaS Pricing Audits', 'Go-To-Market Timelines', 'Customer Personas Audits', 'Exit Options Analysis', 'Strategic Partners Maps']
+  teachers: ['World History', 'Algebra 2', 'Chemistry', 'English Literature', 'Introduction to Coding', 'Creative Writing', 'Middle School Art', 'Physical Education', 'Biology', 'Geography', 'Special Education', 'Early Childhood', 'ESL Instruction', 'Classroom Management', 'STEM Projects'],
+  developers: ['React', 'TypeScript', 'Node.js', 'Python', 'Go', 'Docker', 'PostgreSQL', 'AWS', 'Next.js', 'Rust', 'Kubernetes', 'GraphQL', 'CI-CD Pipelines', 'Swift Mobile', 'SQL Optimization'],
+  marketers: ['SaaS Product Launch', 'E-commerce Brand', 'B2B Lead Generation', 'Local Service Business', 'Personal Brand', 'Real Estate Agency', 'Mobile App Marketing', 'Fitness Coach Marketing', 'Event Promotion', 'Non-profit Outreach', 'TikTok Organic', 'LinkedIn Branding', 'Cold Email Outreach', 'Influencer Campaigns', 'Conversion Rate Optimization'],
+  recruiters: ['Senior Software Engineer', 'Product Manager', 'Data Analyst', 'HR Business Partner', 'Customer Success Manager', 'Financial Analyst', 'Marketing Director', 'Sales Executive', 'UX Designer', 'DevOps Specialist', 'Technical Sourcing', 'Executive Search', 'Diversity Hiring', 'Onboarding Systems', 'Talent Vetting'],
+  students: ['AP US History', 'Organic Chemistry', 'Calculus BC', 'Macroeconomics', 'Introduction to Philosophy', 'Environmental Science', 'Linear Algebra', 'World Literature', 'Psychology 101', 'Sociology', 'Physics C', 'European History', 'Computer Science A', 'SAT Test Prep', 'College Applications'],
+  accountants: ['Corporate Tax Returns', 'Monthly Bookkeeping', 'Internal Audit Prep', 'Cash Flow Forecasting', 'Fixed Asset Depreciation', 'Inventory Valuation', 'Payroll Reconciliation', 'Budget vs Actual Variance', 'SaaS ARR Analysis', 'Mergers & Acquisitions Due Diligence', 'Tax Audit Support', 'Forensic Accounting', 'Cost Allocation Models', 'Cryptocurrency Taxing', 'QuickBooks Integration'],
+  photographers: ['Studio Portraits', 'Wedding Events', 'Natural Light Scenarios', 'Product Visuals', 'Camera Rig Configs', 'Lightroom Presets', 'Model Directing', 'Commercial Advertising', 'Headshots', 'Fine Art Curation', 'Real Estate Shoots', 'Drone Aerials', 'Portrait Retouching', 'Color Grading LUTs', 'Client Print Sales'],
+  'hr-professionals': ['Employee Onboarding', 'Conflict Resolution', 'Compliance Audits', 'Performance Appraisals', 'Policy Manuals', 'Benefits Enrollment', 'Diversity Training', 'Workspace Guidelines', 'Exit Interviews', 'Termination Protocols', 'Remote Work Policy', 'Employee Retention', 'Salary Benchmark Audits', 'Mental Health Wellness', 'Incident Reporting'],
+  'content-writers': ['SEO Blog Outlines', 'Headline Writing', 'Intro Hooks', 'Newsletter Layouts', 'Whitepapers', 'Case Studies', 'Ebooks', 'Competitor Audits', 'FAQ Copywriting', 'Style Editing', 'Ghostwriting Threads', 'Press Releases', 'Product Descriptions', 'Interactive Quizzes Copy', 'Content Refresh Guides'],
+  copywriters: ['AIDA Landing Pages', 'PAS Email Sequences', 'Facebook Ad Layouts', 'Sales Pitch Frameworks', 'Slogans', 'Pricing Pages', 'Upsell Funnels', 'SMS Marketing Copy', 'VSL Scripts', 'Testimonials Blocks', 'Email Subject Lines', 'Google Search Ads', 'Product Comparison Tables', 'Checkout Cart Recovery', 'Customer Winback Scripts'],
+  entrepreneurs: ['Business Models Validation', 'Pitch Deck Outlines', 'Competitor Matrix Profiles', 'Resource Allocations', 'Venture Capital Scenarios', 'SaaS Pricing Audits', 'Go-To-Market Timelines', 'Customer Personas Audits', 'Exit Options Analysis', 'Strategic Partners Maps', 'Bootstrapping Budgets', 'MVP Validation Scripts', 'Fractional Hire Sourcing', 'Unit Economics Calculators', 'Market Penetration Roadmaps']
 };
 
 const difficulties: ('beginner' | 'intermediate' | 'advanced')[] = ['beginner', 'intermediate', 'advanced'];
@@ -546,12 +546,13 @@ categories.forEach((cat) => {
   const profSubjects = subjects[profSlug as keyof typeof subjects] || [
     'General Workflows', 'Client Engagements', 'Process Optimization', 'Reporting Metrics', 
     'Strategic Planning', 'Operational Alignment', 'Team Management', 'Asset Curation', 
-    'Compliance Review', 'Budget Allocations'
+    'Compliance Review', 'Budget Allocations', 'Security Compliance', 'Cost Control Audits',
+    'Resource Scheduling', 'Quality Assurance', 'Training Workbooks'
   ];
   
   profSubjects.forEach((subject, index) => {
     const id = `${profSlug.substring(0, 2)}-gen-${cat.slug.substring(0, 3)}-${index}`;
-    const slug = `${cat.slug}-${subject.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-prompts`;
+    const slug = `chatgpt-prompts-for-${profSlug}-${cat.slug}-${subject.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     const difficulty = difficulties[index % difficulties.length];
     
     let title = '';

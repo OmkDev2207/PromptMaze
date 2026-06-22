@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getPromptBySlug, getRelatedPrompts, prompts } from '@/lib/data/prompts';
 import { getProfessionBySlug, professions } from '@/lib/data/professions';
-import { getCategoryBySlug } from '@/lib/data/categories';
+import { getCategoryBySlug, getCategoriesByProfession } from '@/lib/data/categories';
 import { getGuidesByProfession } from '@/lib/data/guides';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
@@ -83,6 +83,7 @@ export default async function PromptPage({ params }: PromptProps) {
   const relatedProfessions = professions
     .filter((prof) => prof.id !== p?.id)
     .slice(0, 4);
+  const relatedCategories = getCategoriesByProfession(prompt.professionSlug).slice(0, 3);
 
   const breadcrumbs = [
     { label: p ? p.name : 'Profession', href: p ? `/${p.slug}` : undefined },
@@ -359,6 +360,7 @@ export default async function PromptPage({ params }: PromptProps) {
         prompts={relatedPrompts}
         guides={relatedGuides}
         professions={relatedProfessions}
+        categories={relatedCategories}
         title="Explore More AI Resources"
         subtitle="Keep reading related prompts, guidelines, and learning guides."
       />

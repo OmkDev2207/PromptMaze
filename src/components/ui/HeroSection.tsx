@@ -47,16 +47,33 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
           
           {/* Title */}
           <h1 className="mt-6 text-4xl font-black tracking-tight text-white sm:text-6xl leading-[1.1] sm:leading-[1.05]">
-            Supercharge Your Career with{' '}
+            Build Better AI Prompts{' '}
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
-              Expert AI Prompts
+              in Seconds
             </span>
           </h1>
           
           {/* Subtitle */}
           <p className="mt-6 max-w-2xl text-sm sm:text-base text-zinc-400 font-semibold leading-relaxed">
-            Stop struggling with generic AI outputs. Access our database of 300+ battle-tested prompts, 50+ learning guides, and interactive tools curated specifically for your role.
+            Create professional-grade prompts using structured prompt engineering frameworks used by experts. Stop struggling with generic AI outputs and get optimal results from ChatGPT, Claude, and Gemini.
           </p>
+
+          {/* CTA Buttons */}
+          <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start w-full">
+            <Link
+              href="/builder"
+              className="inline-flex h-11 items-center justify-center rounded-xl bg-gradient-to-r from-violet-600 to-indigo-650 px-6 text-sm font-bold text-white shadow-lg shadow-indigo-500/25 hover:opacity-95 active:scale-[0.98] transition-all select-none"
+            >
+              <Sparkles className="mr-2 h-4 w-4" />
+              Launch Prompt Architect
+            </Link>
+            <Link
+              href="/guides"
+              className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/30 px-6 text-sm font-bold text-zinc-300 hover:bg-zinc-850 hover:text-white transition-all select-none"
+            >
+              Browse AI Guides
+            </Link>
+          </div>
 
           {/* Global Autocomplete Search Bar */}
           <div className="mt-10 w-full max-w-lg">

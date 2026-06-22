@@ -33,13 +33,18 @@ export default function Footer() {
               Professions
             </h4>
             <ul className="mt-4 space-y-2">
-              {professions.map((prof) => (
+              {professions.slice(0, 6).map((prof) => (
                 <li key={prof.id}>
                   <Link href={`/${prof.slug}`} className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
                     {prof.name} Hub
                   </Link>
                 </li>
               ))}
+              <li className="pt-1">
+                <Link href="/" className="text-xs font-bold text-violet-600 hover:underline dark:text-violet-400">
+                  View All &rarr;
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -89,6 +94,11 @@ export default function Footer() {
               <li>
                 <Link href="/search" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
                   Global Search
+                </Link>
+              </li>
+              <li>
+                <Link href="/titles" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
+                  Catchy Title Generator
                 </Link>
               </li>
             </ul>

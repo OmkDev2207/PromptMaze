@@ -9,6 +9,7 @@ interface ContinueReadingProps {
   prompts?: Prompt[];
   guides?: Guide[];
   professions?: Profession[];
+  categories?: { name: string; slug: string; icon: string; professionSlug: string }[];
   title?: string;
   subtitle?: string;
 }
@@ -17,15 +18,17 @@ export default function ContinueReading({
   prompts = [],
   guides = [],
   professions = [],
+  categories = [],
   title = "Continue Reading",
   subtitle = "Expand your AI knowledge with related templates, tutorials, and roles."
 }: ContinueReadingProps) {
   // Cap items to ensure we stay in 6-12 items range
-  const displayPrompts = prompts.slice(0, 4);
-  const displayGuides = guides.slice(0, 3);
-  const displayProfessions = professions.slice(0, 4);
+  const displayPrompts = prompts.slice(0, 5); // 5 related prompts
+  const displayGuides = guides.slice(0, 3);   // 3 related guides
+  const displayCategories = categories.slice(0, 3); // 3 related categories
+  const displayProfessions = professions.slice(0, 3); // 3 related professions
 
-  const hasContent = displayPrompts.length > 0 || displayGuides.length > 0 || displayProfessions.length > 0;
+  const hasContent = displayPrompts.length > 0 || displayGuides.length > 0 || displayCategories.length > 0 || displayProfessions.length > 0;
   if (!hasContent) return null;
 
   return (
@@ -98,37 +101,72 @@ export default function ContinueReading({
           </div>
         )}
 
-        {/* Profession Hubs */}
-        {displayProfessions.length > 0 && (
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
-              <Compass className="h-4 w-4 text-violet-500" />
-              Role specific Hubs
-            </h3>
-            <div className="flex flex-col gap-3">
-              {displayProfessions.map((prof) => (
-                <Link
-                  key={prof.id}
-                  href={`/${prof.slug}`}
-                  className="group flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-4 shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700 transition-all duration-200"
-                >
-                  <div className="flex items-center gap-2.5 overflow-hidden">
-                    <span className="text-xl shrink-0">{prof.icon}</span>
-                    <div className="overflow-hidden">
-                      <h4 className="text-sm font-bold text-zinc-900 group-hover:text-violet-600 dark:text-zinc-50 dark:group-hover:text-violet-400 transition-colors truncate">
-                        {prof.name} Hub
-                      </h4>
-                      <p className="mt-0.5 text-xs text-zinc-500 truncate dark:text-zinc-400">
-                        {prof.description}
-                      </p>
+        {/* Stacked Right Column: Categories & Hubs */}
+        <div className="flex flex-col gap-8">
+          {/* Related Categories */}
+          {displayCategories.length > 0 && (
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+                <Compass className="h-4 w-4 text-violet-500" />
+                Related Sub-Categories
+              </h3>
+              <div className="flex flex-col gap-3">
+                {displayCategories.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    href={`/${cat.professionSlug}/${cat.slug}`}
+                    className="group flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-4 shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700 transition-all duration-200"
+                  >
+                    <div className="flex items-center gap-2.5 overflow-hidden">
+                      <span className="text-xl shrink-0">{cat.icon}</span>
+                      <div className="overflow-hidden">
+                        <h4 className="text-sm font-bold text-zinc-900 group-hover:text-violet-600 dark:text-zinc-50 dark:group-hover:text-violet-400 transition-colors truncate">
+                          {cat.name}
+                        </h4>
+                        <p className="mt-0.5 text-xs text-zinc-500 truncate dark:text-zinc-400 font-medium capitalize">
+                          Browse {cat.professionSlug} prompts
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 group-hover:translate-x-1 group-hover:text-violet-500 transition-all" />
-                </Link>
-              ))}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 group-hover:translate-x-1 group-hover:text-violet-500 transition-all" />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Profession Hubs */}
+          {displayProfessions.length > 0 && (
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
+                <Compass className="h-4 w-4 text-violet-500" />
+                Role Specific Hubs
+              </h3>
+              <div className="flex flex-col gap-3">
+                {displayProfessions.map((prof) => (
+                  <Link
+                    key={prof.id}
+                    href={`/${prof.slug}`}
+                    className="group flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-4 shadow-sm hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700 transition-all duration-200"
+                  >
+                    <div className="flex items-center gap-2.5 overflow-hidden">
+                      <span className="text-xl shrink-0">{prof.icon}</span>
+                      <div className="overflow-hidden">
+                        <h4 className="text-sm font-bold text-zinc-900 group-hover:text-violet-600 dark:text-zinc-50 dark:group-hover:text-violet-400 transition-colors truncate">
+                          {prof.name} Hub
+                        </h4>
+                        <p className="mt-0.5 text-xs text-zinc-500 truncate dark:text-zinc-400 font-medium">
+                          {prof.description}
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 group-hover:translate-x-1 group-hover:text-violet-500 transition-all" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

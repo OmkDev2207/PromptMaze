@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { getGuideBySlug, getGuides, guides } from '@/lib/data/guides';
 import { getPromptsByProfession } from '@/lib/data/prompts';
 import { professions, getProfessionBySlug } from '@/lib/data/professions';
+import { getCategoriesByProfession } from '@/lib/data/categories';
 import { parseMarkdown } from '@/lib/utils/markdown';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdSenseSlot from '@/components/ui/AdSenseSlot';
@@ -73,6 +74,8 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
   const relatedProfessions = professions
     .filter((prof) => prof.slug !== guide.professionSlug)
     .slice(0, 4);
+
+  const relatedCategories = guide.professionSlug ? getCategoriesByProfession(guide.professionSlug).slice(0, 3) : [];
 
   const breadcrumbs = [
     { label: 'AI Guides', href: '/guides' },
@@ -289,6 +292,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
         prompts={relatedPrompts}
         guides={relatedGuides}
         professions={relatedProfessions}
+        categories={relatedCategories}
         title="More AI Resources for You"
         subtitle="Keep exploring to master prompts, models, and workflows."
       />

@@ -184,14 +184,24 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/generator"
+              href="/builder"
               className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive('/generator')
+                isActive('/builder')
                   ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
                   : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-50 dark:hover:bg-zinc-900'
               }`}
             >
-              Prompt Generator
+              Prompt Architect
+            </Link>
+            <Link
+              href="/titles"
+              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
+                isActive('/titles')
+                  ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
+                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-50 dark:hover:bg-zinc-900'
+              }`}
+            >
+              Catchy Titles
             </Link>
           </nav>
         </div>
@@ -226,7 +236,7 @@ export default function Header() {
 
           {/* Quick Creator CTA */}
           <Link
-            href="/generator"
+            href="/builder"
             className="hidden sm:inline-flex h-9 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 text-xs font-bold text-white shadow hover:opacity-95 hover:shadow-indigo-500/10 transition-all select-none"
           >
             <Sparkles className="mr-1.5 h-3.5 w-3.5" />
@@ -304,14 +314,24 @@ export default function Header() {
                 Email Prompts
               </Link>
               <Link
-                href="/generator"
+                href="/builder"
                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
-                  isActive('/generator')
+                  isActive('/builder')
                     ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
                     : 'text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800'
                 }`}
               >
-                Prompt Generator
+                Prompt Architect
+              </Link>
+              <Link
+                href="/titles"
+                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
+                  isActive('/titles')
+                    ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
+                    : 'text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800'
+                }`}
+              >
+                Catchy Titles
               </Link>
             </div>
 
