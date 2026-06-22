@@ -193,16 +193,6 @@ export default function Header() {
             >
               Prompt Architect
             </Link>
-            <Link
-              href="/titles"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive('/titles')
-                  ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
-                  : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-50 dark:hover:bg-zinc-900'
-              }`}
-            >
-              Catchy Titles
-            </Link>
           </nav>
         </div>
 
@@ -218,7 +208,7 @@ export default function Header() {
           {mounted && (
             <button
               onClick={toggleTheme}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-850 dark:text-zinc-450 hover:text-zinc-850 dark:hover:text-zinc-200 transition-colors"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
               aria-label="Toggle Light/Dark Theme"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4 text-amber-500" /> : <Moon className="h-4 w-4" />}
@@ -323,16 +313,6 @@ export default function Header() {
               >
                 Prompt Architect
               </Link>
-              <Link
-                href="/titles"
-                className={`rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
-                  isActive('/titles')
-                    ? 'bg-violet-50 text-violet-600 dark:bg-violet-950/20 dark:text-violet-400'
-                    : 'text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800'
-                }`}
-              >
-                Catchy Titles
-              </Link>
             </div>
 
             <hr className="my-6 border-zinc-100 dark:border-zinc-800" />
@@ -373,7 +353,7 @@ export default function Header() {
           </div>
 
           {/* Footer branding in drawer */}
-          <div className="text-center text-[10px] text-zinc-450 dark:text-zinc-650">
+          <div className="text-center text-[10px] text-zinc-400 dark:text-zinc-500">
             PromptMaze © {new Date().getFullYear()}
           </div>
         </div>

@@ -485,7 +485,7 @@ ${compiledPrompt}
                   className={`flex flex-col items-center justify-center rounded-xl border p-3 text-center transition-all select-none hover:scale-[1.02] ${
                     isSelected
                       ? `border-violet-500 bg-gradient-to-b from-violet-50 to-indigo-50/50 text-zinc-900 dark:from-violet-950/20 dark:to-zinc-900 dark:text-zinc-50 shadow-sm ring-1 ring-violet-500/20`
-                      : 'border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-850 dark:text-zinc-400'
+                      : 'border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800 dark:text-zinc-400'
                   }`}
                 >
                   <span className="text-xl mb-1">{prof.icon}</span>
@@ -528,7 +528,7 @@ ${compiledPrompt}
                     <option key={task.id} value={task.id}>{task.name}</option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-3 top-2.5 h-3.5 w-3.5 text-zinc-450 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-2.5 h-3.5 w-3.5 text-zinc-400 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -569,7 +569,7 @@ ${compiledPrompt}
                         <option key={opt} value={opt}>{opt}</option>
                       ))}
                     </select>
-                    <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-450 pointer-events-none" />
+                    <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-400 pointer-events-none" />
                   </div>
                 ) : (
                   <input
@@ -606,7 +606,7 @@ ${compiledPrompt}
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-450 pointer-events-none" />
+                <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-400 pointer-events-none" />
               </div>
             </div>
 
@@ -623,7 +623,7 @@ ${compiledPrompt}
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-450 pointer-events-none" />
+                <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-400 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -649,7 +649,7 @@ ${compiledPrompt}
             ].map((opt) => (
               <label
                 key={opt.id}
-                className={`flex items-start gap-3 rounded-xl border p-3 cursor-pointer select-none transition-all hover:bg-zinc-50 dark:hover:bg-zinc-850 ${
+                className={`flex items-start gap-3 rounded-xl border p-3 cursor-pointer select-none transition-all hover:bg-zinc-50 dark:hover:bg-zinc-800 ${
                   advancedOptions[opt.id]
                     ? 'border-violet-500/50 bg-violet-50/10 dark:bg-violet-950/10'
                     : 'border-zinc-100 bg-white dark:border-zinc-800/80 dark:bg-zinc-900/30'
@@ -662,8 +662,8 @@ ${compiledPrompt}
                   className="mt-0.5 rounded text-violet-600 focus:ring-violet-500 border-zinc-300 dark:border-zinc-800 h-3.5 w-3.5 cursor-pointer"
                 />
                 <div>
-                  <span className="block text-xs font-bold text-zinc-850 dark:text-zinc-200">{opt.label}</span>
-                  <span className="text-[10px] text-zinc-450 dark:text-zinc-550 leading-tight">{opt.desc}</span>
+                  <span className="block text-xs font-bold text-zinc-800 dark:text-zinc-200">{opt.label}</span>
+                  <span className="text-[10px] text-zinc-400 dark:text-zinc-400 leading-tight">{opt.desc}</span>
                 </div>
               </label>
             ))}
@@ -703,10 +703,10 @@ ${compiledPrompt}
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
           <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-5 flex items-center justify-between">
             <span>Prompt Quality Score</span>
-            <span className="text-[10px] bg-violet-100 dark:bg-violet-950/50 text-violet-650 dark:text-violet-400 px-2 py-0.5 rounded font-black">PRO INDEX</span>
+            <span className="text-[10px] bg-violet-100 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400 px-2 py-0.5 rounded font-black">PRO INDEX</span>
           </h2>
 
-          <div className="flex items-center gap-5 border-b border-zinc-100 dark:border-zinc-850/80 pb-5">
+          <div className="flex items-center gap-5 border-b border-zinc-100 dark:border-zinc-800/80 pb-5">
             {/* Score Gauge */}
             <div className="relative shrink-0 flex items-center justify-center">
               <svg className="w-20 h-20 transform -rotate-90">
@@ -714,7 +714,7 @@ ${compiledPrompt}
                   cx="40"
                   cy="40"
                   r="34"
-                  className="stroke-zinc-100 dark:stroke-zinc-850"
+                  className="stroke-zinc-100 dark:stroke-zinc-800"
                   strokeWidth="6"
                   fill="transparent"
                 />
@@ -734,8 +734,8 @@ ${compiledPrompt}
                 />
               </svg>
               <div className="absolute flex flex-col items-center justify-center">
-                <span className="text-lg font-black text-zinc-900 dark:text-zinc-550 leading-none">{qualityScore}</span>
-                <span className="text-[8px] font-bold text-zinc-450 uppercase tracking-widest leading-none mt-0.5">pts</span>
+                <span className="text-lg font-black text-zinc-900 dark:text-zinc-100 leading-none">{qualityScore}</span>
+                <span className="text-[8px] font-bold text-zinc-400 uppercase tracking-widest leading-none mt-0.5">pts</span>
               </div>
             </div>
 
@@ -758,10 +758,10 @@ ${compiledPrompt}
           <div className="mt-4 space-y-3">
             <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Optimization Checklist</h4>
             {getQualityTips().map((tip, idx) => (
-              <div key={idx} className="flex items-start gap-2 bg-zinc-50 dark:bg-zinc-950 p-2.5 rounded-xl border border-zinc-200/40 dark:border-zinc-850/60 text-xs">
+              <div key={idx} className="flex items-start gap-2 bg-zinc-50 dark:bg-zinc-950 p-2.5 rounded-xl border border-zinc-200/40 dark:border-zinc-800/60 text-xs">
                 <AlertCircle className={`h-4 w-4 shrink-0 mt-0.5 ${qualityScore >= 90 ? 'text-emerald-500' : 'text-zinc-400'}`} />
                 <div className="flex-1">
-                  <p className="text-zinc-650 dark:text-zinc-400 leading-normal font-semibold">{tip.text}</p>
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-normal font-semibold">{tip.text}</p>
                 </div>
               </div>
             ))}
@@ -809,7 +809,7 @@ ${compiledPrompt}
               className={`flex-1 min-w-[150px] inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-xs font-black shadow-md transition-all active:scale-[0.98] ${
                 copied
                   ? 'bg-emerald-500 text-white shadow-emerald-500/20'
-                  : 'bg-violet-600 text-white shadow-violet-500/25 hover:bg-violet-500 dark:bg-violet-750 dark:hover:bg-violet-700'
+                  : 'bg-violet-600 text-white shadow-violet-500/25 hover:bg-violet-500 dark:bg-violet-700 dark:hover:bg-violet-600'
               }`}
             >
               {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -877,12 +877,12 @@ ${compiledPrompt}
 
         {/* LocalStorage History and Custom Collections Manager */}
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-          <div className="flex border-b border-zinc-150 dark:border-zinc-800/80 pb-3 mb-4">
+          <div className="flex border-b border-zinc-200 dark:border-zinc-800/80 pb-3 mb-4">
             <button
               onClick={() => setActiveTab('history')}
               className={`flex-1 pb-2 text-xs font-extrabold flex items-center justify-center gap-1.5 border-b-2 transition-all ${
                 activeTab === 'history'
-                  ? 'border-violet-650 text-violet-650 dark:border-violet-400 dark:text-violet-400'
+                  ? 'border-violet-600 text-violet-600 dark:border-violet-400 dark:text-violet-400'
                   : 'border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'
               }`}
             >
@@ -893,7 +893,7 @@ ${compiledPrompt}
               onClick={() => setActiveTab('collections')}
               className={`flex-1 pb-2 text-xs font-extrabold flex items-center justify-center gap-1.5 border-b-2 transition-all ${
                 activeTab === 'collections'
-                  ? 'border-violet-650 text-violet-650 dark:border-violet-400 dark:text-violet-400'
+                  ? 'border-violet-600 text-violet-600 dark:border-violet-400 dark:text-violet-400'
                   : 'border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'
               }`}
             >
@@ -909,10 +909,10 @@ ${compiledPrompt}
                 <div
                   key={item.id}
                   onClick={() => handleRestorePrompt(item)}
-                  className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-3 hover:bg-zinc-100/50 hover:border-zinc-200 dark:border-zinc-850 dark:bg-zinc-900/30 dark:hover:bg-zinc-800/30 cursor-pointer select-none transition-all"
+                  className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-3 hover:bg-zinc-100/50 hover:border-zinc-200 dark:border-zinc-800 dark:bg-zinc-900/30 dark:hover:bg-zinc-800/30 cursor-pointer select-none transition-all"
                 >
                   <div className="min-w-0 flex-1">
-                    <span className="block text-xs font-bold text-zinc-850 dark:text-zinc-200 truncate">{item.title}</span>
+                    <span className="block text-xs font-bold text-zinc-800 dark:text-zinc-200 truncate">{item.title}</span>
                     <span className="block text-[10px] text-zinc-400 mt-0.5">
                       {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • Style: {item.style}
                     </span>
@@ -959,8 +959,8 @@ ${compiledPrompt}
                 {collections.map((coll) => {
                   const collPrompts = savedPrompts.filter(p => coll.promptIds.includes(p.id));
                   return (
-                    <div key={coll.id} className="rounded-xl border border-zinc-155 bg-zinc-50/20 p-3 dark:border-zinc-800">
-                      <div className="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-850">
+                    <div key={coll.id} className="rounded-xl border border-zinc-200 bg-zinc-50/20 p-3 dark:border-zinc-800">
+                      <div className="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-800">
                         <span className="text-xs font-black text-zinc-800 dark:text-zinc-200">{coll.name}</span>
                         <button
                           onClick={(e) => handleDeleteCollection(coll.id, e)}
@@ -977,7 +977,7 @@ ${compiledPrompt}
                             onClick={() => handleRestorePrompt(p)}
                             className="flex items-center justify-between rounded-lg p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/40 text-xs cursor-pointer select-none"
                           >
-                            <span className="text-zinc-650 dark:text-zinc-350 truncate flex-1 pr-3">{p.title}</span>
+                            <span className="text-zinc-600 dark:text-zinc-300 truncate flex-1 pr-3">{p.title}</span>
                             <button
                               onClick={(e) => handleDeleteSavedPrompt(p.id, coll.id, e)}
                               className="text-zinc-400 hover:text-red-500 shrink-0"
@@ -1011,7 +1011,7 @@ ${compiledPrompt}
       {showSaveModal && (
         <div className="fixed inset-0 bg-zinc-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl animate-scaleIn">
-            <h3 className="text-sm font-black uppercase tracking-wider text-zinc-850 dark:text-zinc-100 border-b border-zinc-100 dark:border-zinc-800 pb-3 mb-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-zinc-800 dark:text-zinc-100 border-b border-zinc-100 dark:border-zinc-800 pb-3 mb-4">
               Save Prompt to Collections
             </h3>
 
@@ -1039,7 +1039,7 @@ ${compiledPrompt}
                       <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-450 pointer-events-none" />
+                  <ChevronDown className="absolute right-3.5 top-3.5 h-3.5 w-3.5 text-zinc-400 pointer-events-none" />
                 </div>
               </div>
             </div>

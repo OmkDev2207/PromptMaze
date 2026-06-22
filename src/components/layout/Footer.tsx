@@ -87,18 +87,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/generator" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
-                  Prompt Generator
+                <Link href="/builder" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
+                  Prompt Architect
                 </Link>
               </li>
               <li>
                 <Link href="/search" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
                   Global Search
-                </Link>
-              </li>
-              <li>
-                <Link href="/titles" className="text-sm text-zinc-600 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">
-                  Catchy Title Generator
                 </Link>
               </li>
             </ul>

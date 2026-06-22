@@ -17,7 +17,7 @@ export function parseMarkdown(markdown: string): string {
   const codeBlocks: string[] = [];
   html = html.replace(/```(?:[a-zA-Z0-9]+)?\n([\s\S]*?)\n```/g, (match, code) => {
     const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
-    codeBlocks.push(`<pre class="bg-zinc-50 p-4 rounded-xl border border-zinc-200 font-mono text-sm dark:bg-zinc-950 dark:border-zinc-800 overflow-x-auto my-4 text-zinc-850 dark:text-zinc-305"><code>${code}</code></pre>`);
+    codeBlocks.push(`<pre class="bg-zinc-50 p-4 rounded-xl border border-zinc-200 font-mono text-sm dark:bg-zinc-950 dark:border-zinc-800 overflow-x-auto my-4 text-zinc-800 dark:text-zinc-300"><code>${code}</code></pre>`);
     return placeholder;
   });
 
@@ -31,7 +31,7 @@ export function parseMarkdown(markdown: string): string {
   });
   html = html.replace(/^## (.*$)/gim, (match, title) => {
     const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    return `<h2 id="${slug}" class="text-xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 border-b border-zinc-150 pb-2 dark:border-zinc-850 scroll-mt-20">${title}</h2>`;
+    return `<h2 id="${slug}" class="text-xl font-extrabold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 border-b border-zinc-200 pb-2 dark:border-zinc-800 scroll-mt-20">${title}</h2>`;
   });
   html = html.replace(/^# (.*$)/gim, (match, title) => {
     const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -45,7 +45,7 @@ export function parseMarkdown(markdown: string): string {
   html = html.replace(/\*([^*]+)\*/g, '<em class="italic">$1</em>');
 
   // Blockquotes (> text)
-  html = html.replace(/^&gt;\s+(.*)$/gim, '<blockquote class="border-l-4 border-zinc-300 pl-4 italic my-4 text-zinc-650 dark:border-zinc-800 dark:text-zinc-400">$1</blockquote>');
+  html = html.replace(/^&gt;\s+(.*)$/gim, '<blockquote class="border-l-4 border-zinc-300 pl-4 italic my-4 text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">$1</blockquote>');
 
   // Links ([text](url))
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-indigo-600 font-semibold hover:underline dark:text-indigo-400">$1</a>');

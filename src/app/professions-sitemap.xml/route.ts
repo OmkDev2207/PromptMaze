@@ -15,7 +15,6 @@ export async function GET() {
     `${baseUrl}/guides`,
     `${baseUrl}/emails`,
     `${baseUrl}/builder`,
-    `${baseUrl}/titles`,
     `${baseUrl}/search`,
     `${baseUrl}/about`,
     `${baseUrl}/privacy`,

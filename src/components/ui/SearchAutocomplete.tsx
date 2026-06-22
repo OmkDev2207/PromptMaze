@@ -293,7 +293,7 @@ export default function SearchAutocomplete({
                   }`}
                 >
                   <div className="flex items-center gap-2.5 overflow-hidden">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-zinc-50 dark:bg-zinc-900 text-sm shadow-inner border border-zinc-200/20 dark:border-zinc-850">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-zinc-50 dark:bg-zinc-900 text-sm shadow-inner border border-zinc-200/20 dark:border-zinc-800">
                       {typeof item.icon === 'string' ? item.icon : item.icon || '🔍'}
                     </span>
                     <div className="overflow-hidden">
@@ -326,7 +326,7 @@ export default function SearchAutocomplete({
             )}
           </div>
 
-          <div className="flex items-center justify-between border-t border-zinc-100 px-3 py-2 mt-2 text-[9px] font-medium text-zinc-400 dark:border-zinc-850 dark:text-zinc-500">
+          <div className="flex items-center justify-between border-t border-zinc-100 px-3 py-2 mt-2 text-[9px] font-medium text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
             <span>↑↓ to navigate</span>
             <span>↵ to select</span>
             <span>ESC to close</span>

@@ -49,7 +49,7 @@ export default function AdSenseSlot({
     return (
       <div className={`my-8 flex w-full flex-col items-center justify-center rounded-2xl border border-dashed text-center relative overflow-hidden backdrop-blur-sm ${getVariantStyles()} ${className}`}>
         {/* Subtle background element */}
-        <div className="absolute top-0 right-0 rounded-bl-xl bg-zinc-200/50 dark:bg-zinc-800/50 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-550 select-none">
+        <div className="absolute top-0 right-0 rounded-bl-xl bg-zinc-200/50 dark:bg-zinc-800/50 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 select-none">
           Ad Placement
         </div>
         

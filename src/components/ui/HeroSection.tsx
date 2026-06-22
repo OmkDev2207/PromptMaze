@@ -25,13 +25,13 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="spotlight-container relative overflow-hidden bg-zinc-955 text-white py-20 sm:py-28 border-b border-zinc-900 bg-[#030303]"
+      className="spotlight-container relative overflow-hidden bg-zinc-950 text-white py-20 sm:py-28 border-b border-zinc-900 bg-[#030303]"
     >
       {/* Animated radial spotlight background element */}
       <div className="spotlight-glow" />
 
       {/* Static premium radial glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-violet-650/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-violet-600/5 blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -40,7 +40,7 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
         <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
           
           {/* Animated Badge */}
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs font-bold text-violet-400 select-none hover:border-zinc-750 transition-colors">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs font-bold text-violet-400 select-none hover:border-zinc-700 transition-colors">
             <Sparkles className="h-3 w-3 text-violet-400 animate-pulse" />
             Programmatic AI Prompts & Guides
           </div>
@@ -69,7 +69,7 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
             </Link>
             <Link
               href="/guides"
-              className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/30 px-6 text-sm font-bold text-zinc-300 hover:bg-zinc-850 hover:text-white transition-all select-none"
+              className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/30 px-6 text-sm font-bold text-zinc-300 hover:bg-zinc-800 hover:text-white transition-all select-none"
             >
               Browse AI Guides
             </Link>
@@ -81,7 +81,7 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
             
             {/* Quick shortcuts */}
             <div className="mt-4 flex flex-wrap justify-center lg:justify-start gap-x-2 gap-y-1.5 text-xs text-zinc-500">
-              <span className="font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-650">Popular Hubs:</span>
+              <span className="font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-500">Popular Hubs:</span>
               {popularHubs.map((hub, idx) => (
                 <React.Fragment key={hub.name}>
                   <Link href={hub.href} className="hover:underline text-violet-400 font-semibold">
@@ -121,7 +121,7 @@ export default function HeroSection({ popularHubs }: HeroSectionProps) {
             <img 
               src="/images/hero_dashboard_mockup.png" 
               alt="PromptMaze Dashboard Mockup" 
-              className="relative rounded-xl w-full object-cover shadow-2xl border border-zinc-850" 
+              className="relative rounded-xl w-full object-cover shadow-2xl border border-zinc-800" 
             />
           </div>
         </div>
