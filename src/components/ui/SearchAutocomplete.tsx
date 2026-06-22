@@ -267,7 +267,7 @@ export default function SearchAutocomplete({
       {/* Autocomplete suggestion popover dropdown */}
       {focused && (
         <div className={`absolute left-0 right-0 mt-2 overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/95 p-2 shadow-2xl backdrop-blur-md transition-all duration-200 dark:border-zinc-800/80 dark:bg-zinc-950/95 animate-fade-in-up ${
-          variant === 'hero' ? 'top-full max-h-[380px]' : 'top-full max-h-[300px] w-[320px] md:w-[380px] md:left-auto md:-right-8'
+          variant === 'hero' ? 'top-full max-h-[380px]' : 'top-full max-h-[300px] w-full md:w-[380px] md:left-auto md:-right-8'
         } overflow-y-auto`}>
           
           <div className="px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">

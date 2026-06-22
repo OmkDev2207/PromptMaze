@@ -19,6 +19,12 @@
   --foreground: #f4f4f5;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
